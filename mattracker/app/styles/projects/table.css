@@ -1,0 +1,20 @@
+.tablecontainer{
+    display: flex;
+    justify-content: center;
+}
+
+thead{
+    background-color: #0058a3;
+    color: white;
+}
+
+.locationrow{
+    text-align: center;
+}
+
+.title{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 30px
+}
+
