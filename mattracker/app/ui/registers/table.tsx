@@ -1,18 +1,17 @@
 
-import { Project } from '@/app/lib/definitions';
+import { Register } from '@/app/lib/definitions';
 import "@/app/styles/global/table.css";
-import Link from 'next/link';
 
-export default async function ProjectsTable({
-  projects,
+export default async function RegistersTable({
+  registers,
 }: {
-  projects: Project[];
+  registers: Register[];
 }) {
   return (
     <div>
     <div className="">
       <h1 className="title">
-       Proyectos
+       Registros
       </h1>
       
       <div className="mt-6 flow-root ">
@@ -23,37 +22,48 @@ export default async function ProjectsTable({
                 <thead className="rounded-md text-left text-sm font-normal">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                      Material
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
+                        Accion
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
+                       Fecha/Hora
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
+                      Vehiculo
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
+                      Ubicacion
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
                       Proyecto
                     </th>
-                    <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha inicio
-                    </th>
-                    <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha fin
-                    </th>
-                    <th scope="col" className="px-3 py-5 font-medium">
-                      Localizacion
-                    </th>
-
                   </tr>
                 </thead>
 
                 <tbody className="divide-y divide-gray-200 text-gray-900">
-                  {projects.map((project) => (
-                    <tr key={project.idproject} className="group">
+                  {registers.map((register) => (
+                    <tr key={register.idregister} className="group">
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                         <div className="flex items-center gap-3">
-                          <Link href={`/Proyectos/${project.idproject}`}>{project.name}</Link>
+                          <p>{register.material_idmaterial}</p>
                         </div>
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {JSON.stringify(project.date_start)}
+                        {register.type}
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.date_end}
+                        {JSON.stringify(register.date)}
                       </td>
                       <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.location_idlocation}
+                        {register.vehicle_idvehicle}
+                      </td>
+                      <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+                        {register.location_idlocation}
+                      </td>
+                      <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+                        {register.project_idproject}
                       </td>
                     </tr>
                   ))}

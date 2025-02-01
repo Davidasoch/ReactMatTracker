@@ -1,18 +1,17 @@
 
-import { Project } from '@/app/lib/definitions';
+import { Material } from '@/app/lib/definitions';
 import "@/app/styles/global/table.css";
-import Link from 'next/link';
 
-export default async function ProjectsTable({
-  projects,
+export default async function MaterialsTable({
+  materials,
 }: {
-  projects: Project[];
+  materials: Material[];
 }) {
   return (
     <div>
     <div className="">
       <h1 className="title">
-       Proyectos
+       Material
       </h1>
       
       <div className="mt-6 flow-root ">
@@ -23,37 +22,42 @@ export default async function ProjectsTable({
                 <thead className="rounded-md text-left text-sm font-normal">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                      Proyecto
+                      Nombre
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha inicio
+                        Categoria
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha fin
+                       Subcategoria
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Localizacion
+                      Estado
                     </th>
-
+                    <th scope="col" className="px-3 py-5 font-medium">
+                      Ubicacion
+                    </th>
                   </tr>
                 </thead>
 
                 <tbody className="divide-y divide-gray-200 text-gray-900">
-                  {projects.map((project) => (
-                    <tr key={project.idproject} className="group">
+                  {materials.map((material) => (
+                    <tr key={material.idmaterial} className="group">
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                         <div className="flex items-center gap-3">
-                          <Link href={`/Proyectos/${project.idproject}`}>{project.name}</Link>
+                          <p>{material.name}</p>
                         </div>
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {JSON.stringify(project.date_start)}
+                        {material.category}
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.date_end}
+                        {JSON.stringify(material.subcategory_idsubcategory)}
                       </td>
                       <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.location_idlocation}
+                        {material.state}
+                      </td>
+                      <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+                        {material.location_idlocation}
                       </td>
                     </tr>
                   ))}

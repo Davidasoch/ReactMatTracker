@@ -1,18 +1,17 @@
 
-import { Project } from '@/app/lib/definitions';
+import { Vehicle } from '@/app/lib/definitions';
 import "@/app/styles/global/table.css";
-import Link from 'next/link';
 
-export default async function ProjectsTable({
-  projects,
+export default async function VehiclesTable({
+  vehicles,
 }: {
-  projects: Project[];
+  vehicles: Vehicle[];
 }) {
   return (
     <div>
     <div className="">
       <h1 className="title">
-       Proyectos
+       Vehiculos
       </h1>
       
       <div className="mt-6 flow-root ">
@@ -23,37 +22,36 @@ export default async function ProjectsTable({
                 <thead className="rounded-md text-left text-sm font-normal">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                      Proyecto
+                      Modelo
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha inicio
+                        Matricula
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha fin
+                      Fecha ITV
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Localizacion
+                      Estado
                     </th>
-
                   </tr>
                 </thead>
 
                 <tbody className="divide-y divide-gray-200 text-gray-900">
-                  {projects.map((project) => (
-                    <tr key={project.idproject} className="group">
+                  {vehicles.map((vehicle) => (
+                    <tr key={vehicle.idvehicle} className="group">
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                         <div className="flex items-center gap-3">
-                          <Link href={`/Proyectos/${project.idproject}`}>{project.name}</Link>
+                          <p>{vehicle.model}</p>
                         </div>
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {JSON.stringify(project.date_start)}
+                        {vehicle.plate}
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.date_end}
+                        {JSON.stringify(vehicle.date_itv)}
                       </td>
                       <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.location_idlocation}
+                        {vehicle.location_idlocation}
                       </td>
                     </tr>
                   ))}
