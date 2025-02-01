@@ -71,7 +71,7 @@ export async function fetchProject() {
         const [results] = await connection.query<Vehicle[]>({
           sql: `
             SELECT * FROM vehicle 
-            WHERE idproject = ${id};
+            WHERE idvehicle = ${id};
           `, values: [id]
         })
         await connection.end();
@@ -112,7 +112,7 @@ export async function fetchProject() {
           const [results] = await connection.query<Material[]>({
             sql: `
               SELECT * FROM material 
-              WHERE idproject = ${id};
+              WHERE idmaterial = ${id};
             `, values: [id]
           })
           await connection.end();
