@@ -52,9 +52,10 @@ const Scan = (idlist: object) => {
             switch (record.recordType) {
                 case "text":
                     const textDecoder = new TextDecoder(record.encoding);
-                    setMessage(textDecoder.decode(record.data));
+                    const messagevalue = textDecoder.decode(record.data)
+                    setMessage(messagevalue);
                     console.log(parseInt(message))
-                    addMaterialToList(idlist.idlist,parseInt(message),1)
+                    addMaterialToList(idlist.idlist,parseInt(messagevalue),1)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

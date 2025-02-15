@@ -26,7 +26,6 @@ const id = params.id
 <ProjectsItem  ProjectItem={{materials,projectname}}/>
 <div className='nfc-buttons'>
 <NfcButtonCargar idlist={project[0].list_idlist}/>
-<NfcButtonDescargar/>
 </div>
   </div> 
   );
