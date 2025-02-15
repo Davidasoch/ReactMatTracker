@@ -53,8 +53,8 @@ const Scan = (idlist: object) => {
                 case "text":
                     const textDecoder = new TextDecoder(record.encoding);
                     setMessage(textDecoder.decode(record.data));
-                    console.log(message)
-                    //addMaterialToList(idlist.idlist,parseInt(message),1)
+                    console.log(parseInt(message))
+                    addMaterialToList(idlist.idlist,parseInt(message),1)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
