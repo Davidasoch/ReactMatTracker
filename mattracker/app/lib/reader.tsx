@@ -1,7 +1,6 @@
 'use client'
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Scanner  from '@/app/components/scanbox'
-//import { ScanContext } from '@/app/context/scan'
 import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
 import { addMaterialToList } from '@/app/lib/data'
@@ -32,6 +31,7 @@ const Scan = (idlist: object) => {
                             scan: 'scanned',
                             write: null
                         });
+                        addMaterialToList(idlist.idlist,parseInt(message),1)
                     };
 
                 } catch(error){
@@ -52,8 +52,6 @@ const Scan = (idlist: object) => {
                     const textDecoder = new TextDecoder(record.encoding);
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
-                    console.log(parseInt(message))
-                    addMaterialToList(idlist.idlist,parseInt(messagevalue),1)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
