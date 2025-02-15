@@ -12,8 +12,6 @@ const Scan = (idlist: object) => {
     const [message, setMessage] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const { actions, setActions} = useContext(ActionsContext);
-    let input = actions.scan
-
 
     const scan = useCallback(async() => {
         if ('NDEFReader' in window && actions.scan!='disabled') {  
@@ -66,20 +64,10 @@ const Scan = (idlist: object) => {
         }
     };
 
-    //if(actions.scan != 'disabled'){
-    if (actions.scan!='disabled'){
-        useEffect(() => {
-            scan();
-        }, [scan]);
-    }else{
-        useEffect(() => {
-            console.log(actions.scan);
-        }, [scan]);
-        console.log('disable bro')
-    }
-   // }else{
-       // return <></>;
-   // }
+
+    useEffect(() => {
+        scan();
+    }, [scan]);
 
     return(
         <>
@@ -90,7 +78,7 @@ const Scan = (idlist: object) => {
           <Scanner status={actions.scan}></Scanner>
           <p>{parseInt(message)}</p>
       </div>
-          case "scanning": return <div> <Scanner status={actions.scan}></Scanner>   <p>{input}</p></div>
+          case "scanning": return <div> <Scanner status={actions.scan}></Scanner> </div>
 
           case "disabled": return <><p>disabled</p></>
 

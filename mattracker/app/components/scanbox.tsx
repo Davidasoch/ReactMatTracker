@@ -9,8 +9,6 @@ const Scanner = () => {
 
   const { actions, setActions} = useContext(ActionsContext)
 
- console.log(actions)
-
     return (
 
 
