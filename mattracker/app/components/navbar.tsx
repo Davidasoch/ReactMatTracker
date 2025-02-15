@@ -3,6 +3,15 @@ import Link from 'next/link';
 import Image from "next/image";
 import { useState } from "react"
 
+                       // <Image
+                        //  className="color:green"
+                        //  src=
+                         // alt="Next.js logo"
+                        //  width={60}
+                        //  height={38}
+                       //   priority
+                      //  />
+
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     return(
@@ -31,14 +40,7 @@ export const Navbar = () => {
                         setIsOpen(!isOpen);
                     }}
 
-                >        <Image
-                          className="color:green"
-                          src="icons/menu.svg"
-                          alt="Next.js logo"
-                          width={60}
-                          height={38}
-                          priority
-                        />
+                >        
                     </button></div>
 
             </div>
