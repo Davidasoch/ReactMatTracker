@@ -53,7 +53,7 @@ const Scan = (idlist: object) => {
                 case "text":
                     const textDecoder = new TextDecoder(record.encoding);
                     setMessage(textDecoder.decode(record.data));
-                    addMaterialToList(idlist.idlist,parseInt(message),1)
+                    //addMaterialToList(idlist.idlist,parseInt(message),1)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
@@ -86,7 +86,7 @@ const Scan = (idlist: object) => {
           case "scanned":   return <div>
           <Notification message={message}/>
           <Scanner status={actions.scan}></Scanner>
-          <p>{input}</p>
+          <p>{parseInt(message)}</p>
       </div>
           case "scanning": return <div> <Scanner status={actions.scan}></Scanner>   <p>{input}</p></div>
 
