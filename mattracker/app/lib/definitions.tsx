@@ -40,3 +40,15 @@ export interface Material extends RowDataPacket {
   location_idlocation: number;
   subcategory_idsubcategory: number;
 }
+
+export interface CreateFilteredTable {
+materials:Material[];
+filterCase:string;
+}
+
+export interface ProjectItems {
+  materials:Material[];
+  projectname:string;
+  }
+
+

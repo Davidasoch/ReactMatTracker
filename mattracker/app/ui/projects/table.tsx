@@ -43,7 +43,7 @@ export default async function ProjectsTable({
                     <tr key={project.idproject} className="group">
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                         <div className="flex items-center gap-3">
-                          <Link href={`/Proyectos/${project.idproject}`}>{project.name}</Link>
+                        <Link href={`/Proyectos/${project.idproject}`}>{project.name}</Link>
                         </div>
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">

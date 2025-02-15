@@ -1,3 +1,4 @@
+'use server'
 import { getConnection } from "@/app/lib/db"
 import { Material, Project, Vehicle, Register } from '@/app/lib/definitions';
 
@@ -41,6 +42,49 @@ export async function fetchProject() {
       throw new Error('Failed to fetch project.');
     }
   }
+
+  //retireve the project's list material
+
+  export async function getListMaterialsById(id: number) {
+    try {
+
+      const connection = await getConnection()
+      const [results] = await connection.query<Material[]>({
+        sql: `
+          SELECT material.idmaterial, material.name, material.state, material.vehicle_idvehicle, material.location_idlocation
+           FROM list_has_material
+          INNER JOIN material ON list_has_material.material_idmaterial=material.idmaterial AND list_has_material.list_idlist=${id};
+        `, values: [id]
+      })
+      await connection.end();
+      return results
+
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch project.');
+    }
+  }
+
+    //Add a material to a list
+    export async function addMaterialToList(idlist: number,idmaterial: number, idvehicle: number) {
+      try {
+  
+        const connection = await getConnection()
+        const [results] = await connection.query({
+          sql: `
+            INSERT INTO list_has_material (list_idlist,material_idmaterial, vehicle_idvehicle)
+            VALUES (${idlist},${idmaterial},${idvehicle});
+          `, values: [idlist,idmaterial,idvehicle]
+        })
+        await connection.end();
+        return results
+  
+      } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch project.');
+      }
+    }
+
 
   //Vehicle functions
 

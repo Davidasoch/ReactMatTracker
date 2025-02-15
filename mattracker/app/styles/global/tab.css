@@ -1,0 +1,81 @@
+.main-content{
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+
+
+.content{
+
+
+}
+
+.tabView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.TabView .title {
+    font-weight: bold;
+    padding: 0,5em;
+}
+
+.TabView .body {
+padding: 1em;
+}
+
+.tabView .tabs{
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+
+
+}
+
+
+
+#tabNumberOne { border-right: 0; }
+
+
+.tab{
+    padding: 5px 1em;
+
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.tab:hover {
+    text-decoration: underline;
+    cursor: pointer; 
+  }
+
+
+.tabView .tabs .active-tab {
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    cursor: pointer; 
+    
+    padding: 5px 1em;
+    background-color: rgb(17, 97, 163);
+    color:white;
+}
+
+.active-tab:hover {
+    text-decoration: underline;
+    cursor: pointer; 
+  }
+
+.tabView .content {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 1em;
+border: 1px solid gray;
+}

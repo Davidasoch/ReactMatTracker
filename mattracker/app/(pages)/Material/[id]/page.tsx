@@ -15,6 +15,7 @@ const id = params.id
   return (
     <div>
 <MaterialsTable materials={materials}/>
+
   </div> 
   );
 }

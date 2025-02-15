@@ -1,13 +1,41 @@
 
-import { Material } from '@/app/lib/definitions';
+import { CreateFilteredTable, Material } from '@/app/lib/definitions';
 import "@/app/styles/global/table.css";
 import Link from 'next/link';
 
-function MaterialsTable({
-  materials,
+function FilteredMaterialsTable({
+  materials
 }: {
-  materials: Material[];
+  materials: CreateFilteredTable;
 }) {
+
+  function FilterState(material) {
+    if(material.state === materials.filterCase || materials.filterCase==='Todo')
+      return(
+        <tr key={material.idmaterial} className="group">
+        <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          <div className="flex items-center gap-3">
+          <Link href={`/Material/${material.idmaterial}`}>{material.name}</Link>
+          </div>
+        </td>
+        <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          {material.category}
+        </td>
+        <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          {JSON.stringify(material.subcategory_idsubcategory)}
+        </td>
+        <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          {material.state}
+        </td>
+        <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          {material.location_idlocation}
+        </td>
+      </tr>
+    )
+      else
+        return<></>
+    }
+
   return (
     <div>
     <div className="">
@@ -41,26 +69,8 @@ function MaterialsTable({
                 </thead>
 
                 <tbody className="divide-y divide-gray-200 text-gray-900">
-                  {materials.map((material) => (
-                    <tr key={material.idmaterial} className="group">
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        <div className="flex items-center gap-3">
-                        <Link href={`/Material/${material.idmaterial}`}>{material.name}</Link>
-                        </div>
-                      </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {material.category}
-                      </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {JSON.stringify(material.subcategory_idsubcategory)}
-                      </td>
-                      <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {material.state}
-                      </td>
-                      <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {material.location_idlocation}
-                      </td>
-                    </tr>
+                  {materials.materials.map((material) => (
+                    FilterState(material)
                   ))}
                 </tbody>
               </table>
@@ -73,4 +83,4 @@ function MaterialsTable({
   );
 }
 
-export default MaterialsTable
+export default FilteredMaterialsTable
