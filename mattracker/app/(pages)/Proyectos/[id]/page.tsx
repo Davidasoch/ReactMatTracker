@@ -9,7 +9,6 @@ import Scan from '@/app/lib/reader'
 
 
 
-
 export default async function Page(props: { params: Promise<{ id: number }> }) {
 const params = await props.params
 const id = params.id
@@ -22,15 +21,11 @@ const id = params.id
   const projectname = project[0].name
 
 
-  console.log(materials)
-
-
-
   return (
     <div className='main-content'>
 <ProjectsItem  ProjectItem={{materials,projectname}}/>
 <div className='nfc-buttons'>
-<NfcButtonCargar idlis={project[0].list_idlist}/>
+<NfcButtonCargar idlist={project[0].list_idlist}/>
 <NfcButtonDescargar/>
 </div>
   </div> 

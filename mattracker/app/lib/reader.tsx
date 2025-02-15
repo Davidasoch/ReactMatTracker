@@ -8,11 +8,12 @@ import { addMaterialToList } from '@/app/lib/data'
 
 
 
-const Scan = (idlist) => {
+const Scan = (idlist: object) => {
     const [message, setMessage] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const { actions, setActions} = useContext(ActionsContext);
     let input = actions.scan
+
 
     const scan = useCallback(async() => {
         if ('NDEFReader' in window && actions.scan!='disabled') {  
@@ -52,8 +53,7 @@ const Scan = (idlist) => {
                 case "text":
                     const textDecoder = new TextDecoder(record.encoding);
                     setMessage(textDecoder.decode(record.data));
-                    console.log(parseInt(message))
-                    addMaterialToList(idlist,parseInt(message),1)
+                    addMaterialToList(idlist.idlist,parseInt(message),1)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

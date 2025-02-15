@@ -5,7 +5,7 @@ import { useState, useContext } from 'react'
 import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
 
-const NfcButtonCargar = (idlist) => {
+const NfcButtonCargar = (idlist: object ) => {
 
 const [actions, setActions] = useState(null);
 
@@ -23,7 +23,7 @@ return (
 <button onClick={()=>onHandleAction({scan: 'scanning', write: null})} className="btn">Cargar</button>
 </div>
 <ActionsContext.Provider value={actionsValue}>
-{ scan && <Scan idlis={idlist}/>}
+{ scan && <Scan idlist={idlist.idlist}/>}
 </ActionsContext.Provider>
 </div>
 )
