@@ -52,6 +52,7 @@ const Scan = (idlist) => {
                 case "text":
                     const textDecoder = new TextDecoder(record.encoding);
                     setMessage(textDecoder.decode(record.data));
+                    console.log(parseInt(message))
                     addMaterialToList(idlist,parseInt(message),1)
                     break;
                 case "url":

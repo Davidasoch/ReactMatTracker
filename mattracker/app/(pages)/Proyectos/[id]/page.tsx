@@ -30,7 +30,7 @@ const id = params.id
     <div className='main-content'>
 <ProjectsItem  ProjectItem={{materials,projectname}}/>
 <div className='nfc-buttons'>
-<NfcButtonCargar/>
+<NfcButtonCargar idlis={project[0].list_idlist}/>
 <NfcButtonDescargar/>
 </div>
   </div> 
