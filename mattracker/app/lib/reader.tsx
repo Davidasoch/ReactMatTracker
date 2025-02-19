@@ -14,7 +14,6 @@ const Scan = (idlist: object) => {
 
     const scan = useCallback(async() => {
         if ('NDEFReader' in window && actions.scan!='disabled') {  
-
                 try {
                     const ndef = new window.NDEFReader();
                     await ndef.scan();
@@ -31,7 +30,7 @@ const Scan = (idlist: object) => {
                             scan: 'scanned',
                             write: null
                         });
-                        addMaterialToList(idlist.idlist,parseInt(message),1)
+                        
                     };
 
                 } catch(error){
@@ -52,6 +51,7 @@ const Scan = (idlist: object) => {
                     const textDecoder = new TextDecoder(record.encoding);
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
+                    addMaterialToList(idlist.idlist,parseInt(messagevalue),1)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

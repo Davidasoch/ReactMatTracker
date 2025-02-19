@@ -6,6 +6,10 @@ import NfcButtonCargar from '@/app/components/nfcbuttoncarga'
 import NfcButtonDescargar from '@/app/components/nfcbuttondescarga'
 import { ActionsContext } from '@/app/context/scantest';
 import Scan from '@/app/lib/reader'
+import Link from "next/link";
+import '@/app/styles/notifications.css'
+import { redirect } from 'next/navigation'
+import { ButtonStaple } from "@/app/components/buttonStaple";
 
 
 
@@ -19,13 +23,21 @@ const id = params.id
 
   const materials = await getListMaterialsById(project[0].list_idlist);
   const projectname = project[0].name
+  const idlist = project[0].list_idlist
+
+
+
+  const label = 'Cargar'
+  const path = `/CargarMaterial/${idlist}`
+
 
 
   return (
     <div className='main-content'>
+
 <ProjectsItem  ProjectItem={{materials,projectname}}/>
 <div className='nfc-buttons'>
-<NfcButtonCargar idlist={project[0].list_idlist}/>
+  <ButtonStaple data={{path,label}}/>
 </div>
   </div> 
   );

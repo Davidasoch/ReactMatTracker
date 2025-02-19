@@ -133,5 +133,6 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
+    padding: 15px;
   }
 

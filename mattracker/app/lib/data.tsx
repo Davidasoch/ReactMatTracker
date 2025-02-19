@@ -11,7 +11,7 @@ export async function fetchProject() {
       const  connection = await getConnection() 
       const [results] = await connection.query<Project[]>({
         sql: `
-          SELECT * FROM project;
+          SELECT project.idproject, project.name, project.date_start, project.date_end, project.location_idlocation, project.list_idlist, location.name AS location_name FROM project INNER JOIN location on project.location_idlocation = location.idlocation;
         `, values: []
       })
       await connection.end();
@@ -51,9 +51,12 @@ export async function fetchProject() {
       const connection = await getConnection()
       const [results] = await connection.query<Material[]>({
         sql: `
-          SELECT material.idmaterial, material.name, material.state, material.vehicle_idvehicle, material.location_idlocation
+          SELECT material.idmaterial, material.name, material.state, material.vehicle_idvehicle, material.location_idlocation, material.category, material.project_state, subcategory.name AS subcategory_name, location.name AS location_name, vehicle.model
            FROM list_has_material
-          INNER JOIN material ON list_has_material.material_idmaterial=material.idmaterial AND list_has_material.list_idlist=${id};
+          INNER JOIN material ON list_has_material.material_idmaterial=material.idmaterial AND list_has_material.list_idlist=${id}
+          INNER JOIN subcategory ON material.subcategory_idsubcategory=subcategory.idsubcategory
+          INNER JOIN location ON material.location_idlocation = location.idlocation
+          LEFT JOIN vehicle ON material.vehicle_idvehicle = vehicle.idvehicle;
         `, values: [id]
       })
       await connection.end();

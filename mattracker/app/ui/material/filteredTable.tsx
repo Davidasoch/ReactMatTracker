@@ -22,13 +22,19 @@ function FilteredMaterialsTable({
           {material.category}
         </td>
         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-          {JSON.stringify(material.subcategory_idsubcategory)}
+          {material.subcategory_name}
         </td>
         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
           {material.state}
         </td>
         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-          {material.location_idlocation}
+          {material.project_state}
+        </td>
+        <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          {material.location_name}
+        </td>
+        <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+          {material.model}
         </td>
       </tr>
     )
@@ -63,7 +69,13 @@ function FilteredMaterialsTable({
                       Estado
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
+                      Itinerario
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
                       Ubicacion
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
+                      Vehiculo
                     </th>
                   </tr>
                 </thead>

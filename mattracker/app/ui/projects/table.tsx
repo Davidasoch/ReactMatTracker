@@ -8,6 +8,7 @@ export default async function ProjectsTable({
 }: {
   projects: Project[];
 }) {
+  console.log(projects)
   return (
     <div>
     <div className="">
@@ -53,7 +54,7 @@ export default async function ProjectsTable({
                         {project.date_end}
                       </td>
                       <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {project.location_idlocation}
+                        {project.location_name}
                       </td>
                     </tr>
                   ))}
