@@ -136,3 +136,15 @@
     padding: 15px;
   }
 
+*:disabled{
+  background-color: dimgrey;
+  color: linen;
+  opacity: 1;
+  }
+
+  *:disabled:hover{
+    background-color: dimgrey;
+    color: linen;
+    opacity: 1;
+    }
+

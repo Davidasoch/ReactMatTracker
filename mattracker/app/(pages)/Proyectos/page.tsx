@@ -26,7 +26,6 @@ export default async function Page() {
   return (
     <div>
 <ProjectsTable projects={projects}/>
-<Link href="/CargarMaterial">Open modal</Link>
   </div> 
   );
 }

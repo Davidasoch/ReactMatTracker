@@ -1,6 +1,6 @@
 
 import { fetchVehicle } from "@/app/lib/data";
-import VehiclesTable from '@/app/ui/vehicles/table';
+import VehiclesSelector from '@/app/ui/vehicles/selector';
 import Modal from "@/app/components/modaltest";
 import Link from "next/link";
 import NfcButtonCargar from "@/app/components/nfcbuttoncarga";
@@ -18,7 +18,7 @@ const idlist = params.id
   return (
     <div>
       <Modal>
-        <VehiclesTable vehicles={vehicles}/>
+        <VehiclesSelector vehicles={vehicles}/>
         <div className='nfc-buttons'>
         <NfcButtonCargar idlist={idlist}/>
         </div>

@@ -7,7 +7,7 @@ import { addMaterialToList } from '@/app/lib/data'
 
 
 
-const Scan = (idlist: object) => {
+const Scan = (items: object) => {
     const [message, setMessage] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const { actions, setActions} = useContext(ActionsContext);
@@ -51,7 +51,7 @@ const Scan = (idlist: object) => {
                     const textDecoder = new TextDecoder(record.encoding);
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
-                    addMaterialToList(idlist.idlist,parseInt(messagevalue),1)
+                    addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

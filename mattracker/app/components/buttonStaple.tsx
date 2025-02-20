@@ -12,6 +12,6 @@ export const ButtonStaple = (data) => {
 
     return(
 
-<button onClick={callPath}>{data.data.label}</button>
+<button  onClick={callPath}>{data.data.label}</button>
     )
 }
