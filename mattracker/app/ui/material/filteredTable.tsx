@@ -9,7 +9,6 @@ function FilteredMaterialsTable({
   materials: CreateFilteredTable;
 }) {
 
-  console.log(materials)
 
   function FilterState(material) {
     if(material.state === materials.filterCase || materials.filterCase==='Todo')

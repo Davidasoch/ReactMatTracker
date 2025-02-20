@@ -18,8 +18,6 @@ const onHandleAction = (actions) =>{
   setActions({...actions});
 }
 
-console.log(items.vehicle_id)
-
 return (
 <div>
 <div className="nfc-button">

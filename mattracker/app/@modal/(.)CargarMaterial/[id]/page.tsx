@@ -18,10 +18,7 @@ const idlist = params.id
   return (
     <div>
       <Modal>
-        <VehiclesSelector vehicles={vehicles}/>
-        <div className='nfc-buttons'>
-        <NfcButtonCargar idlist={idlist}/>
-        </div>
+        <VehiclesSelector vehicles={vehicles} idlist={idlist}/>
       </Modal>
   </div> 
   );
