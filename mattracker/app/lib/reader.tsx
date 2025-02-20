@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Scanner  from '@/app/components/scanbox'
 import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
-import { addMaterialToList } from '@/app/lib/data'
+import { addMaterialToList, updateMaterialVehicle} from '@/app/lib/data'
 
 
 
@@ -52,6 +52,7 @@ const Scan = (items: object) => {
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
                     addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
+                    updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

@@ -88,6 +88,28 @@ export async function fetchProject() {
       }
     }
 
+    //update material vehicle
+
+   export async function updateMaterialVehicle(idmaterial: number, idvehicle: number) {
+
+    try {
+  
+      const connection = await getConnection()
+      const [results] = await connection.query({
+        sql: ` 
+        UPDATE material SET vehicle_idvehicle = ${idvehicle}
+        WHERE idmaterial = ${idmaterial};
+   `, values: [idmaterial,idvehicle]
+      })
+      await connection.end();
+      return results
+
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch project.');
+    }
+   }
+
 
   //Vehicle functions
 
