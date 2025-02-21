@@ -95,7 +95,7 @@
     margin-top: 1em;
   }
   
-  button {
+.nfc-buttons .btn {
     background: #0f6ebb;
     color:white;
     width: 150px;
@@ -118,7 +118,7 @@
     }
   }
   
-  button:hover {
+  .nfc-buttons .btn:hover {
     background: #ffffff;
     color: black;
     border: 1px solid gray;
@@ -136,15 +136,12 @@
     padding: 15px;
   }
 
-*:disabled{
+  .nfc-buttons .btn:disabled{
   background-color: dimgrey;
   color: linen;
   opacity: 1;
+  border: 1px solid gray;
   }
 
-  *:disabled:hover{
-    background-color: dimgrey;
-    color: linen;
-    opacity: 1;
-    }
+
 

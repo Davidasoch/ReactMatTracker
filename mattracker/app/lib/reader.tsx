@@ -4,7 +4,7 @@ import Scanner  from '@/app/components/scanbox'
 import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
 import { addMaterialToList, updateMaterialVehicle} from '@/app/lib/data'
-
+import { updateMaterialProjectState } from '@/app/lib/data';
 
 
 const Scan = (items: object) => {
@@ -53,6 +53,7 @@ const Scan = (items: object) => {
                     setMessage(messagevalue);
                     addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
                     updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
+                    updateMaterialProjectState(parseInt(messagevalue))
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

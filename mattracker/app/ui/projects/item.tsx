@@ -37,9 +37,9 @@ const setStatus = (index) => {
 
 
     return(
-<div className='tabView'>
+<div className='tabView overflow-auto'>
 <h4 className='title'>{ProjectItem.projectname}</h4>
-<div className='tab-body'>
+<div className='tab-body m-auto'>
 {Object.keys(tabs).length === 0 ?
   <div>No tabs</div>
   :

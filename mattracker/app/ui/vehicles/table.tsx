@@ -15,7 +15,7 @@ export default async function VehiclesTable({
        Vehiculos
       </h1>
       
-      <div className="mt-6 flow-root ">
+      <div className="tab-body mt-6 flow-root ">
         <div className="overflow-x-auto">
           <div className="tablecontainer">
             <div className="rounded-md p-2 md:pt-0">

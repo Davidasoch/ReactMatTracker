@@ -5,9 +5,17 @@ flex-direction: column;
 
 }
 
+.tab-body{
+overflow: auto;
+justify-content: center;
+
+}
+
 
 .content{
-
+    display: flex;
+    justify-content: center;
+    overflow: auto;
 
 }
 

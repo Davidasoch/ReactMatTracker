@@ -21,7 +21,7 @@ const onHandleAction = (actions) =>{
 return (
 <div>
 <div className="nfc-button">
-<button id='loadMaterial' disabled={items.status} onClick={()=>onHandleAction({scan: 'scanning', write: null})} className="btn">Cargar</button>
+<button  disabled={items.status} onClick={()=>onHandleAction({scan: 'scanning', write: null})} className="btn">Cargar</button>
 </div>
 <ActionsContext.Provider value={actionsValue}>
 { scan && <Scan idlist={items.idlist} idvehicle={items.vehicle_id}/>}
