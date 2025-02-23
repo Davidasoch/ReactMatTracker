@@ -1,6 +1,6 @@
 'use server'
 import { getConnection } from "@/app/lib/db"
-import { Material, Project, Vehicle, Register } from '@/app/lib/definitions';
+import { Material, Project, Vehicle, Register, Location } from '@/app/lib/definitions';
 
 //Project functions
 
@@ -142,7 +142,8 @@ export async function fetchProject() {
       const  connection = await getConnection() 
       const [results] = await connection.query<Vehicle[]>({
         sql: `
-          SELECT * FROM vehicle;
+          SELECT vehicle.idvehicle, vehicle.model, vehicle.plate, vehicle.date_itv, vehicle.state, location.name AS location_name  FROM vehicle
+          INNER JOIN location ON vehicle.location_idlocation = location.idlocation;
         `, values: []
       })
       await connection.end();
@@ -234,4 +235,47 @@ export async function fetchProject() {
       throw new Error('Failed to fetch project data.');
     }
   }
+
+  export async function fetchLocations() {
+    try {
+ 
+      const  connection = await getConnection() 
+      const [results] = await connection.query<Location[]>({
+        sql: `
+          SELECT * FROM location;
+        `, values: []
+      })
+      await connection.end();
+      return results
+
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch project data.');
+    }
+  }
+
+  //update the location  for vehicles and material
+
+  export async function updateVehicleLocation(idvehicle: number, idlocation: number) {
+
+    try {
+
+      const connection = await getConnection()
+      const [resultsVehicle] = await connection.query({
+        sql: `
+        UPDATE material m, vehicle v SET m.location_idlocation = ${idlocation}, v.location_idlocation = ${idlocation}
+        WHERE v.idvehicle = ${idvehicle}
+        AND m.vehicle_idvehicle = ${idvehicle};
+        `, values: [idlocation, idvehicle]
+      })
+      await connection.end();
+      return 
+
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch project.');
+    }
+  }
+
+  
 

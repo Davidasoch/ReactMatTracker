@@ -105,7 +105,18 @@
     outline: none;
     box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.2);
     transition: all .2s ease;
+  }
 
+  .styled-buttons .btn {
+    background: #0f6ebb;
+    color:white;
+    width: 80px;
+    height: 30px;
+    border: 1px 1em;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.2);
+    transition: all .2s ease;
   }
   
   @keyframes slide-in {
@@ -119,6 +130,12 @@
   }
   
   .nfc-buttons .btn:hover {
+    background: #ffffff;
+    color: black;
+    border: 1px solid gray;
+  }
+
+  .styled-buttons .btn:hover {
     background: #ffffff;
     color: black;
     border: 1px solid gray;

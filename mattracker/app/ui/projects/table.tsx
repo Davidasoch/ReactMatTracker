@@ -17,8 +17,8 @@ export default async function ProjectsTable({
       </h1>
       
       <div className="tablea ">
-        <div className="tableb ">
-          <div className="tablec ">
+        <div className="">
+          <div className="">
             <div className="tablex rounded-md p-2 md:pt-0">
               <table className="tablez rounded-md text-gray-900 md:table border">
                 <thead className="rounded-md text-left text-sm font-normal">

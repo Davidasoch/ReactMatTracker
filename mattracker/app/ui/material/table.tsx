@@ -10,16 +10,16 @@ function MaterialsTable({
 }) {
   return (
     <div>
-    <div className="">
+    <div className="main-container">
       <h1 className="title">
        Material
       </h1>
       
-      <div className="mt-6 flow-root ">
+      <div className="tablea">
         <div className="overflow-x-auto">
           <div className="tablecontainer">
             <div className="rounded-md p-2 md:pt-0">
-              <table className=" min-w-full rounded-md text-gray-900 md:table border justify-content-center">
+              <table className=" rounded-md text-gray-900 md:table border justify-content-center">
                 <thead className="rounded-md text-left text-sm font-normal">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">

@@ -41,6 +41,13 @@ export interface Material extends RowDataPacket {
   subcategory_idsubcategory: number;
 }
 
+export interface Location extends RowDataPacket {
+  idlocation: number;
+  name: string;
+  municipality_idmunicipality: number;
+
+}
+
 export interface CreateFilteredTable {
 materials:Material[];
 filterCase:string;

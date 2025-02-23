@@ -1,25 +1,28 @@
 
+
 import { Vehicle } from '@/app/lib/definitions';
 import "@/app/styles/global/table.css";
 import Link from 'next/link';
+import '@/app/styles/notifications.css'
 
 export default async function VehiclesTable({
   vehicles,
 }: {
   vehicles: Vehicle[];
-}) {
+}) {    
+
   return (
     <div>
-    <div className="">
+    <div className="main-container">
       <h1 className="title">
        Vehiculos
       </h1>
       
-      <div className="tab-body mt-6 flow-root ">
-        <div className="overflow-x-auto">
-          <div className="tablecontainer">
+      <div className="tablea">
+        <div className="">
+          <div className="">
             <div className="rounded-md p-2 md:pt-0">
-              <table className=" min-w-full rounded-md text-gray-900 md:table border justify-content-center">
+              <table className="  rounded-md text-gray-900 md:table border justify-content-center">
                 <thead className="rounded-md text-left text-sm font-normal">
                   <tr>
                     <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
@@ -29,10 +32,10 @@ export default async function VehiclesTable({
                         Matricula
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Fecha ITV
+                      Ubicacion
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Estado
+                      Reubicar
                     </th>
                   </tr>
                 </thead>
@@ -48,11 +51,18 @@ export default async function VehiclesTable({
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                         {vehicle.plate}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {JSON.stringify(vehicle.date_itv)}
+                      <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+                        {vehicle.location_name}
                       </td>
                       <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                        {vehicle.location_idlocation}
+            
+
+                        <Link href={`/ReubicarVehiculo/${vehicle.idvehicle}`} passHref>
+                        <div className='styled-buttons'>
+                          <button className="btn">Actualizar</button>
+                          </div>
+                        </Link>
+
                       </td>
                     </tr>
                   ))}
