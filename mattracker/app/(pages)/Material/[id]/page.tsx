@@ -10,6 +10,8 @@ const id = params.id
 
   const materials = await getMaterialById(id);
 
+  console.log(materials[0].project_state)
+
   return (
     <div>
 <MaterialsTable materials={materials}/>
