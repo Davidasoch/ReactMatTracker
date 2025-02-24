@@ -54,15 +54,17 @@ const Scan = (items: object) => {
                     setMessage(messagevalue);
                     //se anade el material a la lista del proyecto
                     //addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
+                    const material = getMaterialById(parseInt(messagevalue))
+                    console.log(material)
 
                     //se actualiza el vehiculo en el que sen encuentra el material
                     //updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
 
                     //se actualiza el estado del material en relacion al proyecto
-                    updateMaterialProjectState(parseInt(messagevalue))
+                    //updateMaterialProjectState(parseInt(messagevalue))
 
                     //se crea el registro de la accion
-                    createRegister(items.idlist, parseInt(messagevalue), items.idvehicle)
+                    //createRegister(items.idlist, parseInt(messagevalue), items.idvehicle)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

@@ -236,16 +236,15 @@ export async function fetchProject() {
     }
   }
 
-  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number,) {
+  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, date: Date, type: string) {
     try {
 
       const connection = await getConnection()
-      const material = getMaterialById(idmaterial)
       const [results] = await connection.query({
         sql: `
           INSERT INTO register (material_idmaterial, date, type, location_idlocation, vehicle_idvehicle, project_idproject)
-          VALUES (${idmaterial},${Date.now},${material[0].project_state},${material[0].location_idlocation},${idvehicle},${idproject});
-        `, values: [idmaterial,material[0].project_state,material[0].location_idlocation,location,idmaterial,idproject]
+          VALUES (${idmaterial},${date},${type},${location},${idvehicle},${idproject});
+        `, values: [idmaterial,date,type,location,idmaterial,idproject]
       })
       await connection.end();
       return results
