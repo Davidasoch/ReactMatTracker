@@ -242,7 +242,7 @@ export async function fetchProject() {
       const [results] = await connection.query({
         sql: `
           INSERT INTO register (material_idmaterial, date, type, location_idlocation, vehicle_idvehicle, project_idproject)
-          VALUES (${idmaterial},'2025-07-07',${type},'1',${idvehicle},${idproject});
+          VALUES (${idmaterial},'2025-07-07',${type},1,${idvehicle},${idproject});
         `, values: [idmaterial,type,idmaterial,idproject]
       })
       await connection.end();
