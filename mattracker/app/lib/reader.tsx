@@ -62,8 +62,7 @@ const Scan = (items: object) => {
                     updateMaterialProjectState(parseInt(messagevalue))
 
                     //se crea el registro de la accion
-                    const currentmaterial = getMaterialById(parseInt(messagevalue))
-                    createRegister(items.idlist,currentmaterial[0].idmaterial, items.idvehicle, '2025-07-07', currentmaterial[0].project_state )
+                    createRegister(items.idlist, parseInt(messagevalue), items.idvehicle)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
