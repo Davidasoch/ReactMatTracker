@@ -54,7 +54,7 @@ const Scan = (items: object) => {
                     setMessage(messagevalue);
                     //se anade el material a la lista del proyecto
                     //addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
-                    const material = getMaterialById(parseInt(messagevalue))
+                    const material = JSON.stringify(getMaterialById(parseInt(messagevalue)))
                     console.log(material)
 
                     //se actualiza el vehiculo en el que sen encuentra el material
