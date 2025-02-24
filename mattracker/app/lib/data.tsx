@@ -187,7 +187,8 @@ export async function fetchProject() {
             `, values: [id]
           })
           await connection.end();
-          return results[0].project_state
+          const resultstate = results[0].project_state
+          return resultstate
     
         } catch (error) {
           console.error('Database Error:', error);
