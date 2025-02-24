@@ -189,8 +189,8 @@ export async function fetchProject() {
           await connection.end();
 
           const resultstate = {
-            state: results[0].project_state,
-            location: results[0].location_idlocation
+            state: JSON.stringify(results[0].project_state),
+            location: JSON.stringify(results[0].location_idlocation)
           }
           return resultstate
     
@@ -261,7 +261,7 @@ export async function fetchProject() {
     }
   }
 
-  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, type: string) {
+  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, type: string, location: number) {
     try {
 
       const connection = await getConnection()
