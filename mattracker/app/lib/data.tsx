@@ -190,9 +190,9 @@ export async function fetchProject() {
 
 
            const state = results[0].project_state
-            const location = results[0].location_idlocation
+            //const location = results[0].location_idlocation
           
-          return [state, location]
+          return state
     
         } catch (error) {
           console.error('Database Error:', error);
@@ -261,15 +261,15 @@ export async function fetchProject() {
     }
   }
 
-  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, type: string, location: number) {
+  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, type: string) {
     try {
 
       const connection = await getConnection()
       const [results] = await connection.query({
         sql: `
           INSERT INTO register (material_idmaterial, date, type, location_idlocation, vehicle_idvehicle, project_idproject)
-          VALUES (${idmaterial},'2025-07-07',${type},${location},${idvehicle},${idproject});
-        `, values: [idmaterial,type,location,idmaterial,idproject]
+          VALUES (${idmaterial},'2025-07-07',${type},'1',${idvehicle},${idproject});
+        `, values: [idmaterial,type,idmaterial,idproject]
       })
       await connection.end();
       return results
