@@ -64,7 +64,7 @@ const Scan = (items: object) => {
 
                     //se crea el registro de la accion
                     const material = getMaterialState(parseInt(messagevalue))
-                    createRegister(items.idlist, parseInt(messagevalue),items.idvehicle, material.state, material.location)
+                    createRegister(items.idlist, parseInt(messagevalue),items.idvehicle, material.state, material.resultstate.location)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.

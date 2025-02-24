@@ -192,7 +192,7 @@ export async function fetchProject() {
             state: results[0].project_state,
             location: results[0].location_idlocation
           }
-          return JSON.stringify(resultstate)
+          return resultstate
     
         } catch (error) {
           console.error('Database Error:', error);

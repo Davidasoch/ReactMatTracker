@@ -15,6 +15,7 @@ const id = params.id
     location: materials[0].location_idlocation
   }
 
+  console.log(resultstate.state)
 
   return (
     <div>
