@@ -5,7 +5,7 @@ import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
 import { addMaterialToList, getMaterialById, updateMaterialVehicle} from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
-import { createRegister } from '@/app/lib/data';
+import { createRegister, getMaterialState} from '@/app/lib/data';
 
 
 const Scan = (items: object) => {
@@ -54,7 +54,7 @@ const Scan = (items: object) => {
                     setMessage(messagevalue);
                     //se anade el material a la lista del proyecto
                     //addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
-                    const material = JSON.stringify(getMaterialById(parseInt(messagevalue)))
+                    const material = getMaterialState(parseInt(messagevalue))
                     console.log(material)
 
                     //se actualiza el vehiculo en el que sen encuentra el material
