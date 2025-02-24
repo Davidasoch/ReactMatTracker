@@ -53,18 +53,18 @@ const Scan = (items: object) => {
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
                     //se anade el material a la lista del proyecto
-                    //addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
-                    const material = getMaterialState(parseInt(messagevalue))
-                    console.log(material)
+                    addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
+
 
                     //se actualiza el vehiculo en el que sen encuentra el material
-                    //updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
+                    updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
 
                     //se actualiza el estado del material en relacion al proyecto
-                    //updateMaterialProjectState(parseInt(messagevalue))
+                    updateMaterialProjectState(parseInt(messagevalue))
 
                     //se crea el registro de la accion
-                    //createRegister(items.idlist, parseInt(messagevalue), items.idvehicle)
+                    const material = getMaterialState(parseInt(messagevalue))
+                    createRegister(items.idlist, parseInt(messagevalue),items.idvehicle, material.state, material.location)
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
