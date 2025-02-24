@@ -235,7 +235,6 @@ export async function fetchProject() {
       throw new Error('Failed to fetch project data.');
     }
   }
-
   export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, type: string) {
     try {
 

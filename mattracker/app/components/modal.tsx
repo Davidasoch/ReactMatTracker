@@ -4,10 +4,8 @@ import { ReactNode } from "react"
 
 export default function Modal({
     children,
-    title,
 }:{
     children: ReactNode;
-    title: string
 }) {
 
     const router = useRouter();
@@ -28,7 +26,6 @@ return(
             <span  className="flex justify-end cursor-pointer" onClick={closeModal}>
                 X
               </span>
-              <h3>{title}</h3>
               <div>
             {children}
               </div>

@@ -1,7 +1,7 @@
 
 import { fetchLocations } from "@/app/lib/data";
 import LocationSelector from '@/app/ui/location/selector';
-import Modal from "@/app/components/modaltest";
+import Modal from "@/app/components/modal";
 import { getVehicleById } from "@/app/lib/data";
 
 export default async function Page(props: { params: Promise<{ id: number }> }) {

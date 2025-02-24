@@ -11,14 +11,3 @@ export function getActionsValue() {
 
     return actionsValue
 }
-
-    const [actions, setActions] = useState(null);
-    
-    const {scan, write} = actions || {};
-    
-    const actionsValue = {actions,setActions};
-    
-    export function onHandleAction(actionst){
-      setActions({...actionst})
-      return actions
-    }

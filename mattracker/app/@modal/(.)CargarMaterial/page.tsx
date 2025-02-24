@@ -1,7 +1,7 @@
 
 import { fetchVehicle } from "@/app/lib/data";
 import VehiclesTable from '@/app/ui/vehicles/table';
-import Modal from "@/app/components/modaltest";
+import Modal from "@/app/components/modal";
 import Link from "next/link";
 import NfcButtonCargar from "@/app/components/nfcbuttoncarga";
 

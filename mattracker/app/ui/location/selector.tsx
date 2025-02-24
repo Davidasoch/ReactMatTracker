@@ -2,8 +2,6 @@
 import { Location, Vehicle } from '@/app/lib/definitions';
 import { useState } from 'react';
 import "@/app/styles/global/table.css";
-import { useContext } from 'react';
-import { ActionsContext } from '@/app/context/scantest';
 import { updateVehicleLocation } from '@/app/lib/data';
 
 
