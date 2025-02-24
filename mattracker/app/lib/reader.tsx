@@ -5,6 +5,7 @@ import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
 import { addMaterialToList, getMaterialById, updateMaterialVehicle} from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
+import { createRegister } from '@/app/lib/data';
 
 
 const Scan = (items: object) => {
