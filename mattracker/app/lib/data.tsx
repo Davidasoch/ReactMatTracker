@@ -238,7 +238,7 @@ export async function fetchProject() {
   export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, type: string) {
     try {
 
-      const material = getProjectById(idmaterial)
+      const material = getMaterialById(idmaterial)
       const state = material[0].project_state
 
       const connection = await getConnection()
