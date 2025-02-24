@@ -53,10 +53,10 @@ const Scan = (items: object) => {
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
                     //se anade el material a la lista del proyecto
-                    addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
+                    //addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
 
                     //se actualiza el vehiculo en el que sen encuentra el material
-                    updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
+                    //updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
 
                     //se actualiza el estado del material en relacion al proyecto
                     updateMaterialProjectState(parseInt(messagevalue))
