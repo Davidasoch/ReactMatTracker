@@ -1,5 +1,5 @@
 
-import { getMaterialById, getMaterialState } from "@/app/lib/data";
+import { getMaterialById } from "@/app/lib/data";
 import MaterialsTable from '@/app/ui/material/table';
 
 export default async function Page(props: { params: Promise<{ id: number }> }) {
@@ -9,9 +9,6 @@ const id = params.id
   //console.log(res)
 
   const materials = await getMaterialById(id);
-
-  const test = await getMaterialState(id)
-
 
   return (
     <div>

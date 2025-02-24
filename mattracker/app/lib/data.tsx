@@ -175,31 +175,6 @@ export async function fetchProject() {
       }
     }
 
-      //retrieve a material by id
-      export async function getMaterialState(id: number) {
-        try {
-
-          const connection = await getConnection()
-          const [results] = await connection.query<Material[]>({
-            sql: `
-              SELECT * FROM material 
-              WHERE idmaterial = ${id};
-            `, values: [id]
-          })
-          await connection.end();
-
-
-           const state = results[0].project_state
-            //const location = results[0].location_idlocation
-          
-          return state
-    
-        } catch (error) {
-          console.error('Database Error:', error);
-          throw new Error('Failed to fetch project.');
-        }
-      }
-
   //Material functions
 
   //retrieve all materials

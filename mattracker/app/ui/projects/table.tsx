@@ -8,7 +8,7 @@ export default async function ProjectsTable({
 }: {
   projects: Project[];
 }) {
-  console.log(projects)
+
   return (
     <div>
     <div className="main-container">
