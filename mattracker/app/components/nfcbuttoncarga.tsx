@@ -10,7 +10,7 @@ const NfcButtonCargar = (items: object ) => {
 
 const [actions, setActions] = useState(null);
 
-const {scan, write} = actions || {};
+const {scan, unload} = actions || {};
 
 const actionsValue = {actions,setActions};
 

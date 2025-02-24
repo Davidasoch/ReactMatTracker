@@ -236,6 +236,25 @@ export async function fetchProject() {
     }
   }
 
+  export async function createRegister(idproject: number,idmaterial: number, idvehicle: number, date: Date, type: string, ) {
+    try {
+
+      const connection = await getConnection()
+      const [results] = await connection.query({
+        sql: `
+          INSERT INTO register (material_idmaterial, date, type, location_idlocation, vehicle_idvehicle, project_idproject)
+          VALUES (${idmaterial},${date},${type},${location},${idvehicle},${idproject});
+        `, values: [idmaterial,date,type,location,idmaterial,idproject]
+      })
+      await connection.end();
+      return results
+
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch project.');
+    }
+  }
+
   export async function fetchLocations() {
     try {
  

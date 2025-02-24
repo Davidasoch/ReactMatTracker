@@ -26,19 +26,25 @@ const id = params.id
   const idlist = project[0].list_idlist
 
 
+const loaddata = {
+  label : 'Cargar',
+  path : `/CargarMaterial/${idlist}`
+}
 
-  const label = 'Cargar'
-  const path = `/CargarMaterial/${idlist}`
-
-
+const unloaddata = {
+  label : 'Descargar',
+  path : `/DescargarProyecto/${idlist}`
+}
 
   return (
     <div className='main-content'>
 
 <ProjectsItem  ProjectItem={{materials,projectname}}/>
 <div className='nfc-buttons'>
-  <ButtonStaple data={{path,label}}/>
+  <ButtonStaple data={loaddata}/>
+  <ButtonStaple data={unloaddata}/>
 </div>
+
   </div> 
   );
 }

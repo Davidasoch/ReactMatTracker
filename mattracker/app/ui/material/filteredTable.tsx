@@ -11,7 +11,7 @@ function FilteredMaterialsTable({
 
 
   function FilterState(material) {
-    if(material.state === materials.filterCase || materials.filterCase==='Todo')
+    if(material.project_state === materials.filterCase && material.location_idlocation !== 3 || materials.filterCase==='Todo')
       return(
         <tr key={material.idmaterial} className="group">
         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
@@ -39,6 +39,35 @@ function FilteredMaterialsTable({
         </td>
       </tr>
     )
+      else
+      if(material.location_idlocation === 3 && material.project_state === 'Cargado' && materials.filterCase === 'Pendiente')
+        return(
+          <tr key={material.idmaterial} className="group">
+          <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            <div className="flex items-center gap-3">
+            <Link href={`/Material/${material.idmaterial}`}>{material.name}</Link>
+            </div>
+          </td>
+          <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            {material.category}
+          </td>
+          <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            {material.subcategory_name}
+          </td>
+          <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            {material.state}
+          </td>
+          <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            {material.project_state}
+          </td>
+          <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            {material.location_name}
+          </td>
+          <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
+            {material.model}
+          </td>
+        </tr>
+      )
       else
         return<></>
     }

@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Scanner  from '@/app/components/scanbox'
 import { ActionsContext } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
-import { addMaterialToList, updateMaterialVehicle} from '@/app/lib/data'
+import { addMaterialToList, getMaterialById, updateMaterialVehicle} from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
 
 
@@ -51,9 +51,18 @@ const Scan = (items: object) => {
                     const textDecoder = new TextDecoder(record.encoding);
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
+                    //se anade el material a la lista del proyecto
                     addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
+
+                    //se actualiza el vehiculo en el que sen encuentra el material
                     updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
+
+                    //se actualiza el estado del material en relacion al proyecto
                     updateMaterialProjectState(parseInt(messagevalue))
+
+                    //se crea el registro de la accion
+                    const currentmaterial = getMaterialById(parseInt(messagevalue))
+                    createRegister(items.idlist,currentmaterial[0].idmaterial, items.idvehicle, Date.now, currentmaterial[0].project_state )
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
