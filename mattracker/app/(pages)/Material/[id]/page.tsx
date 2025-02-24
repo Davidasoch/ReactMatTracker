@@ -10,7 +10,11 @@ const id = params.id
 
   const materials = await getMaterialById(id);
 
-  console.log(materials)
+  const resultstate = {
+    state: materials[0].project_state,
+    location: materials[0].location_idlocation
+  }
+
 
   return (
     <div>
