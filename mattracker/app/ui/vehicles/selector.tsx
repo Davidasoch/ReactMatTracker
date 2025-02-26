@@ -47,12 +47,6 @@ function changeStatus() {
                           Matricula
                       </th>
                       <th scope="col" className="px-3 py-5 font-medium">
-                        Fecha ITV
-                      </th>
-                      <th scope="col" className="px-3 py-5 font-medium">
-                        Estado
-                      </th>
-                      <th scope="col" className="px-3 py-5 font-medium">
                         Seleccion
                       </th>
                     </tr>
@@ -69,12 +63,6 @@ function changeStatus() {
                         </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           {vehicle.plate}
-                        </td>
-                        <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {JSON.stringify(vehicle.date_itv)}
-                        </td>
-                        <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {vehicle.location_idlocation}
                         </td>
                         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
                         <input type="radio" name='selected_vehicle' onChange={changeStatus} value={`${vehicle.idvehicle}`}/>
