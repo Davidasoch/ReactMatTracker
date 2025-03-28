@@ -7,7 +7,7 @@ import Notification from '@/app/components/notification'
 import { addMaterialToList, updateMaterialVehicle } from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
 import { createRegister } from '@/app/lib/data';
-import '@/app/lib/nfcdefinitions.d';
+import { NDEFReader, NDEFReadingEvent} from '@/app/lib/nfcdefinitions.d';
 
 
 const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) => {
@@ -21,7 +21,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
             try {
 
 
-                const ndef:NDEFReader = new NDEFReader();
+                const ndef:NDEFReader = new window.NDEFReader();
                 await ndef.scan();
 
                 console.log("Scan started successfully.");
