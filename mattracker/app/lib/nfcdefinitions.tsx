@@ -1,21 +1,20 @@
 export interface Window {
   NDEFMessage: NDEFMessage
 }
-export declare class NDEFMessage {
+declare class NDEFMessage {
   constructor(messageInit: NDEFMessageInit)
   records: ReadonlyArray<NDEFRecord>
 }
-export declare interface NDEFMessageInit {
+declare interface NDEFMessageInit {
   records: NDEFRecordInit[]
 }
 
-export declare type NDEFRecordDataSource = BufferSource
+declare type NDEFRecordDataSource = string | BufferSource | NDEFMessageInit
 
 export interface Window {
   NDEFRecord: NDEFRecord
 }
-
-export declare class NDEFRecord {
+declare class NDEFRecord {
   constructor(recordInit: NDEFRecordInit)
   readonly recordType: string
   readonly mediaType?: string
@@ -25,8 +24,7 @@ export declare class NDEFRecord {
   readonly lang?: string
   toRecords?: () => NDEFRecord[]
 }
-
-export declare interface NDEFRecordInit {
+declare interface NDEFRecordInit {
   recordType: string
   mediaType?: string
   id?: string
@@ -35,15 +33,15 @@ export declare interface NDEFRecordInit {
   data?: NDEFRecordDataSource
 }
 
-export declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
+declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
 
-export interface window {
+export interface Window {
   NDEFReader: NDEFReader
 }
 
 export declare class NDEFReader extends EventTarget {
   constructor()
-  onreading: (this: this, event: NDEFReadingEvent) =>  void
+  onreading: (this: this, event: NDEFReadingEvent) => void
   onreadingerror: (this: this, error: Event) => void
   scan: (options?: NDEFScanOptions) => Promise<void>
   write: (
@@ -56,23 +54,24 @@ export declare class NDEFReader extends EventTarget {
 export interface Window {
   NDEFReadingEvent: NDEFReadingEvent
 }
+
 export declare class NDEFReadingEvent extends Event {
   constructor(type: string, readingEventInitDict: NDEFReadingEventInit)
   serialNumber: string
   message: NDEFMessage
 }
-export interface NDEFReadingEventInit extends EventInit {
+interface NDEFReadingEventInit extends EventInit {
   serialNumber?: string
   message: NDEFMessageInit
 }
 
-export interface NDEFWriteOptions {
+interface NDEFWriteOptions {
   overwrite?: boolean
   signal?: AbortSignal
 }
-export interface NDEFMakeReadOnlyOptions {
+interface NDEFMakeReadOnlyOptions {
   signal?: AbortSignal
 }
-export interface NDEFScanOptions {
+interface NDEFScanOptions {
   signal: AbortSignal
 }
