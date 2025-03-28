@@ -1,6 +1,4 @@
-export interface window {
-  NDEFMessage: NDEFMessage
-}
+
 declare class NDEFMessage {
   constructor(messageInit: NDEFMessageInit)
   records: ReadonlyArray<NDEFRecord>
@@ -11,9 +9,7 @@ declare interface NDEFMessageInit {
 
 declare type NDEFRecordDataSource = string | BufferSource | NDEFMessageInit
 
-export interface window {
-  NDEFRecord: NDEFRecord
-}
+
 declare class NDEFRecord {
   constructor(recordInit: NDEFRecordInit)
   readonly recordType: string
@@ -35,11 +31,8 @@ declare interface NDEFRecordInit {
 
 declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
 
-export interface window {
-  NDEFReader: NDEFReader
-}
 
-export declare class NDEFReader extends EventTarget {
+declare class NDEFReader extends EventTarget {
   constructor()
   onreading: (this: this, event: NDEFReadingEvent) => void
   onreadingerror: (this: this, error: Event) => void
@@ -51,11 +44,8 @@ export declare class NDEFReader extends EventTarget {
   makeReadOnly: (options?: NDEFMakeReadOnlyOptions) => Promise<void>
 }
 
-export interface window {
-  NDEFReadingEvent: NDEFReadingEvent
-}
 
-export declare class NDEFReadingEvent extends Event {
+declare class NDEFReadingEvent extends Event {
   constructor(type: string, readingEventInitDict: NDEFReadingEventInit)
   serialNumber: string
   message: NDEFMessage
