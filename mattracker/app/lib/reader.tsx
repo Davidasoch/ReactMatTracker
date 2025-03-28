@@ -19,7 +19,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
     const scan = useCallback(async () => {
         if ('NDEFReader' in Window && actions.scan != 'disabled') {
             try {
-                const ndef = new NDEFReader();
+                const ndef:NDEFReader = new window.NDEFReader();
                 await ndef.scan();
 
                 console.log("Scan started successfully.");
