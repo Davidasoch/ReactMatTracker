@@ -3,7 +3,7 @@
 import mysql from 'mysql2/promise';
 
 
-export async function getConnection(){
+export async function getConnection() {
     const connection = await mysql.createConnection({
         host: process.env.DATABASE_HOST,
         database: process.env.DATABASE_NAME,

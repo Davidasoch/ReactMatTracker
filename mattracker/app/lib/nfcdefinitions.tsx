@@ -1,20 +1,21 @@
-interface Window {
+export interface Window {
   NDEFMessage: NDEFMessage
 }
-declare class NDEFMessage {
+export declare class NDEFMessage {
   constructor(messageInit: NDEFMessageInit)
   records: ReadonlyArray<NDEFRecord>
 }
-declare interface NDEFMessageInit {
+export declare interface NDEFMessageInit {
   records: NDEFRecordInit[]
 }
 
-declare type NDEFRecordDataSource = string | BufferSource | NDEFMessageInit
+export declare type NDEFRecordDataSource = BufferSource
 
-interface Window {
+export interface Window {
   NDEFRecord: NDEFRecord
 }
-declare class NDEFRecord {
+
+export declare class NDEFRecord {
   constructor(recordInit: NDEFRecordInit)
   readonly recordType: string
   readonly mediaType?: string
@@ -24,7 +25,8 @@ declare class NDEFRecord {
   readonly lang?: string
   toRecords?: () => NDEFRecord[]
 }
-declare interface NDEFRecordInit {
+
+export declare interface NDEFRecordInit {
   recordType: string
   mediaType?: string
   id?: string
@@ -33,16 +35,16 @@ declare interface NDEFRecordInit {
   data?: NDEFRecordDataSource
 }
 
-declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
+export declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
 
-interface Window {
+export interface window {
   NDEFReader: NDEFReader
 }
 
-declare class NDEFReader extends EventTarget {
+export declare class NDEFReader extends EventTarget {
   constructor()
-  onreading: (this: this, event: NDEFReadingEvent) => any
-  onreadingerror: (this: this, error: Event) => any
+  onreading: (this: this, event: NDEFReadingEvent) =>  void
+  onreadingerror: (this: this, error: Event) => void
   scan: (options?: NDEFScanOptions) => Promise<void>
   write: (
     message: NDEFMessageSource,
@@ -51,26 +53,26 @@ declare class NDEFReader extends EventTarget {
   makeReadOnly: (options?: NDEFMakeReadOnlyOptions) => Promise<void>
 }
 
-interface Window {
+export interface Window {
   NDEFReadingEvent: NDEFReadingEvent
 }
-declare class NDEFReadingEvent extends Event {
+export declare class NDEFReadingEvent extends Event {
   constructor(type: string, readingEventInitDict: NDEFReadingEventInit)
   serialNumber: string
   message: NDEFMessage
 }
-interface NDEFReadingEventInit extends EventInit {
+export interface NDEFReadingEventInit extends EventInit {
   serialNumber?: string
   message: NDEFMessageInit
 }
 
-interface NDEFWriteOptions {
+export interface NDEFWriteOptions {
   overwrite?: boolean
   signal?: AbortSignal
 }
-interface NDEFMakeReadOnlyOptions {
+export interface NDEFMakeReadOnlyOptions {
   signal?: AbortSignal
 }
-interface NDEFScanOptions {
+export interface NDEFScanOptions {
   signal: AbortSignal
 }

@@ -1,13 +1,11 @@
 'use client'
 
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 
-export function getActionsValue() {
+export function GetActionsValue() {
     const [actions, setActions] = useState(null);
-    
-    const {scan, write} = actions || {};
-    
-    const actionsValue = {actions,setActions};
+
+    const actionsValue = { actions, setActions };
 
     return actionsValue
 }

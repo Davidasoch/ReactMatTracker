@@ -1,33 +1,20 @@
 
 'use client'
 import Scan from '@/app/lib/reader'
-import { useState, useContext } from 'react'
-import { ActionsContext } from '@/app/context/scantest';
-import { useRef } from 'react';
-import Notification from '@/app/components/notification'
+import { useActions } from '@/app/context/scantest';
 
-const NfcButtonCargar = (items: object ) => {
+const NfcButtonCargar = ({ idlist, status, vehicle_id }: { idlist: number; status: boolean; vehicle_id: number }) => {
 
-const [actions, setActions] = useState(null);
+    const { actions, startScan } = useActions();
 
-const {scan, unload} = actions || {};
-
-const actionsValue = {actions,setActions};
-
-const onHandleAction = (actions) =>{
-  setActions({...actions});
-}
-
-return (
-<div>
-<div className="nfc-button">
-<button  disabled={items.status} onClick={()=>onHandleAction({scan: 'scanning', write: null})} className="btn">Cargar</button>
-</div>
-<ActionsContext.Provider value={actionsValue}>
-{ scan && <Scan idlist={items.idlist} idvehicle={items.vehicle_id}/>}
-</ActionsContext.Provider>
-</div>
-)
+    return (
+        <div>
+            <div className="nfc-button">
+                <button disabled={status} onClick={() => startScan()} className="btn">Cargar</button>
+            </div>
+            {actions.scan && <Scan idlist={idlist} vehicle_id={vehicle_id} />}
+        </div>
+    )
 }
 
 export default NfcButtonCargar

@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <div>
-<RegistersTable registers={registers}/>
-  </div> 
+      <RegistersTable registers={registers} />
+    </div>
   );
 }

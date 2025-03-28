@@ -3,34 +3,34 @@ import { useRouter } from "next/navigation";
 import { ReactNode } from "react"
 
 export default function Modal({
-    children,
-}:{
-    children: ReactNode;
+  children,
+}: {
+  children: ReactNode;
 }) {
 
-    const router = useRouter();
+  const router = useRouter();
 
-    function closeModal() {
-        router.back()
-    }
+  function closeModal() {
+    router.back()
+  }
 
 
-return(
+  return (
     <div role="dialog">
 
 
 
 
-        <div className="backdrop">
-            <div className="modal">
-            <span  className="flex justify-end cursor-pointer" onClick={closeModal}>
-                X
-              </span>
-              <div>
+      <div className="backdrop">
+        <div className="modal">
+          <span className="flex justify-end cursor-pointer" onClick={closeModal}>
+            X
+          </span>
+          <div>
             {children}
-              </div>
-            </div>
-            <style jsx>{`
+          </div>
+        </div>
+        <style jsx>{`
               :global(body) {
                 overflow: hidden;
               }
@@ -54,10 +54,10 @@ return(
                 padding: 1em;
               }
             `}</style>
-          </div>
+      </div>
 
 
     </div>
-)
+  )
 
 }

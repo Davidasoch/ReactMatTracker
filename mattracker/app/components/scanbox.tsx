@@ -1,28 +1,29 @@
 
 'use client'
 import '@/app/styles/scanbox.css'
-import React, { useContext, useState } from 'react';
-import { ScanContext } from '@/app/context/scan';
-import { ActionsContext } from '@/app/context/scantest'
+import React from 'react';
+import { useActions, ActionsProvider } from '@/app/context/scantest'
 
 const Scanner = () => {
 
-  const { actions, setActions} = useContext(ActionsContext)
+  const { stopScan } = useActions()
 
-    return (
+  return (
 
 
-      
-      <div className="scanner">
-        <p className="scanner-exit" onClick={()=>setActions({...actions, scan: 'disabled'})}>X</p>
-        <div className="scanner-container">
-          <img  alt="spinning log" className="scanner-image"/>
-          <p className="scanner-text">
-            Scanning...
-          </p>
-        </div>
+
+    <div className="scanner">
+      <ActionsProvider>
+        <p className="scanner-exit" onClick={stopScan}>X</p>
+      </ActionsProvider>
+      <div className="scanner-container">
+        <img alt="spinning log" className="scanner-image" />
+        <p className="scanner-text">
+          Scanning...
+        </p>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Scanner;

@@ -1,9 +1,9 @@
 
 import { fetchVehicle } from "@/app/lib/data";
 import VehiclesTable from '@/app/ui/vehicles/table';
-import NfcButtonCargar from '@/app/components/nfcbuttoncarga'
+//import NfcButtonCargar from '@/app/components/nfcbuttoncarga'
 
-export default async function Page(props: { params: Promise<{ id: number }> }) {
+export default async function Page() {
 
   //const res = fetchProject()
   //console.log(res)
@@ -14,8 +14,8 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
   return (
     <div>
 
-        <VehiclesTable vehicles={vehicles}/>
+      <VehiclesTable vehicles={vehicles} />
 
-  </div> 
+    </div>
   );
 }

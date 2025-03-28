@@ -5,15 +5,12 @@ import '@/app/styles/notifications.css'
 
 export default async function Page() {
 
-  //const res = fetchProject()
-  //console.log(res)
-
   const vehicles = await fetchVehicle();
 
 
   return (
     <div>
-<VehiclesTable vehicles={vehicles}/>
-  </div> 
+      <VehiclesTable vehicles={vehicles} />
+    </div>
   );
 }

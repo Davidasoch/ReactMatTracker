@@ -1,17 +1,17 @@
 'use client'
-import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
-export const ButtonStaple = (data) => {
+
+export const ButtonStaple = ({ path, label }: { path: string, label: string }) => {
 
     const router = useRouter()
 
-    function callPath(){
-      router.push(data.data.path)
-       }
+    function callPath() {
+        router.push(path)
+    }
 
-    return(
+    return (
 
-<button className='btn' onClick={callPath}>{data.data.label}</button>
+        <button className='btn' onClick={callPath}>{label}</button>
     )
 }

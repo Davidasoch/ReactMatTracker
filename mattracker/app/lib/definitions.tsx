@@ -1,34 +1,34 @@
 import { RowDataPacket } from "mysql2"
 
-export interface Project extends RowDataPacket  {
-    idproject: number;
-    name: string;
-    date_start: string;
-    date_end: string;
-    location_idlocation: number;
-    list_idlist: number;
-  };
+export interface Project extends RowDataPacket {
+  idproject: number;
+  name: string;
+  date_start: string;
+  date_end: string;
+  location_idlocation: number;
+  list_idlist: number;
+};
 
-  export interface Vehicle extends RowDataPacket   {
-    idvehicle: number;
-    model: string;
-    plate: string;
-    date_itv: string;
-    state: string;
-    location_idlocation: number
-  }
+export interface Vehicle extends RowDataPacket {
+  idvehicle: number;
+  model: string;
+  plate: string;
+  date_itv: string;
+  state: string;
+  location_idlocation: number
+}
 
 
 
-  export interface Register extends RowDataPacket  {
-    idregister: number;
-    material_idmaterial: number;
-    what?: string;
-    date: string;
-    vehicle_idvehicle: number;
-    location_idlocation: number;
-    project_idproject: number;
-  }
+export interface Register extends RowDataPacket {
+  idregister: number;
+  material_idmaterial: number;
+  what?: string;
+  date: string;
+  vehicle_idvehicle: number;
+  location_idlocation: number;
+  project_idproject: number;
+}
 
 
 
@@ -49,13 +49,28 @@ export interface Location extends RowDataPacket {
 }
 
 export interface CreateFilteredTable {
-materials:Material[];
-filterCase:string;
+  materials: Material[];
+  filterCase: string;
 }
 
 export interface ProjectItems {
-  materials:Material[];
-  projectname:string;
+  materials: Material[];
+  projectname: string;
+}
+
+export type ScannerContext = {
+  actions: {
+    scan: string,
+    write: string
   }
+  startScan: () => void;
+  stopScan: () => void;
+
+};
+
+
+
+
+
 
 

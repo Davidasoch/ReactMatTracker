@@ -1,72 +1,75 @@
 'use client'
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import Scanner  from '@/app/components/scanbox'
-import { ActionsContext } from '@/app/context/scantest';
+
+import React, { useCallback, useEffect, useState } from 'react';
+import Scanner from '@/app/components/scanbox'
+import { useActions } from '@/app/context/scantest';
 import Notification from '@/app/components/notification'
-import { addMaterialToList, getMaterialById, updateMaterialVehicle} from '@/app/lib/data'
+import { addMaterialToList, updateMaterialVehicle } from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
-import { createRegister} from '@/app/lib/data';
+import { createRegister } from '@/app/lib/data';
+import { NDEFReader, NDEFReadingEvent } from '@/app/lib/nfcdefinitions';
 
 
-const Scan = (items: object) => {
+const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) => {
+
     const [message, setMessage] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
-    const { actions, setActions} = useContext(ActionsContext);
+    const { actions, startScan, stopScan } = useActions()
 
-    const scan = useCallback(async() => {
-        if ('NDEFReader' in window && actions.scan!='disabled') {  
-                try {
-                    const ndef = new window.NDEFReader();
-                    await ndef.scan();
-                    
-                    console.log("Scan started successfully.");
-                    ndef.onreadingerror = () => {
-                        console.log("Cannot read data from the NFC tag. Try another one?");
-                    };
-                    
-                    ndef.onreading = event => {
-                        console.log("NDEF message read.");
-                        onReading(event);
-                        setActions({
-                            scan: 'scanned',
-                            write: null
-                        });
-                        
-                    };
+    const scan = useCallback(async () => {
+        if ('NDEFReader' in window && actions.scan != 'disabled') {
+            try {
+                const ndef = new NDEFReader();
+                await ndef.scan();
 
-                } catch(error){
-                    console.log(`Error! Scan failed to start: ${error}.`);
+                console.log("Scan started successfully.");
+                ndef.onreadingerror = () => {
+                    console.log("Cannot read data from the NFC tag. Try another one?");
                 };
-        }
-    },[setActions]);
 
-    const onReading = ({message, serialNumber}) => {
-        setSerialNumber(serialNumber);
-        for (const record of message.records) {
+                ndef.onreading = event => {
+                    console.log("NDEF message read.");
+                    onReading(event);
+                    console.log(event.serialNumber)
+                    startScan();
+
+                };
+            } catch (error) {
+                console.log(`Error! Scan failed to start: ${error}.`);
+            };
+            
+        }
+    }, [stopScan]);
+
+
+    const onReading = (event:NDEFReadingEvent) => {
+        setSerialNumber(event.serialNumber);
+        console.log(serialNumber)
+        for (const record of event.message.records) {
             switch (record.recordType) {
                 case "text":
                     const textDecoder = new TextDecoder(record.encoding);
                     const messagevalue = textDecoder.decode(record.data)
                     setMessage(messagevalue);
                     //se anade el material a la lista del proyecto
-                    addMaterialToList(items.idlist,parseInt(messagevalue),items.idvehicle)
+                    addMaterialToList(idlist, parseInt(messagevalue), vehicle_id)
 
 
                     //se actualiza el vehiculo en el que sen encuentra el material
-                    updateMaterialVehicle(parseInt(messagevalue),items.idvehicle)
+                    updateMaterialVehicle(parseInt(messagevalue), vehicle_id)
 
                     //se actualiza el estado del material en relacion al proyecto
                     updateMaterialProjectState(parseInt(messagevalue))
 
                     //se crea el registro de la accion
-                    createRegister(items.idlist,parseInt(messagevalue),items.idvehicle,'Cargado')
+                    createRegister(idlist, parseInt(messagevalue), vehicle_id, 'Cargado')
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
                     break;
                 default:
-                    // TODO: Handle other records with record data.
-                }
+                // TODO: Handle other records with record data.
+            }
         }
     };
 
@@ -75,26 +78,26 @@ const Scan = (items: object) => {
         scan();
     }, [scan]);
 
-    return(
+    return (
         <>
-{(() => {
-        switch (actions.scan) {
-          case "scanned":   return <div>
-          <Notification message={message}/>
-          <Scanner status={actions.scan}></Scanner>
-          <p>{parseInt(message)}</p>
-      </div>
-          case "scanning": return <div> <Scanner status={actions.scan}></Scanner> </div>
+            {(() => {
+                switch (actions.scan) {
+                    case "scanned": return <div>
+                        <Notification message={message} />
+                        <Scanner></Scanner>
+                        <p>{parseInt(message)}</p>
+                    </div>
+                    case "scanning": return <div> <Scanner></Scanner> <p>{actions.scan}</p></div>
 
-          case "disabled": return <><p>disabled</p></>
+                    case "disabled": return <><p>{actions.scan}</p></>
 
-          default:      return null;
-        }
-      })()}
+                    default: return null;
+                }
+            })()}
 
 
 
- 
+
         </>
     );
 };

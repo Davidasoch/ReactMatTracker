@@ -8,12 +8,12 @@ export default async function Page() {
   //console.log(res)
 
   const materials = await fetchMaterial();
- 
+
 
 
   return (
     <div>
-<MaterialsTable materials={materials}/>
-  </div> 
+      <MaterialsTable materials={materials} />
+    </div>
   );
 }
