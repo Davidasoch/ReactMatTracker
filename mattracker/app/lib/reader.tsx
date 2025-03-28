@@ -7,7 +7,7 @@ import Notification from '@/app/components/notification'
 import { addMaterialToList, updateMaterialVehicle } from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
 import { createRegister } from '@/app/lib/data';
-import { NDEFReader, NDEFReadingEvent } from '@/app/lib/nfcdefinitions';
+import { NDEFReader, NDEFReadingEvent} from '@/app/lib/nfcdefinitions.d';
 
 
 const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) => {
@@ -19,7 +19,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
     const scan = useCallback(async () => {
         if ('NDEFReader' in window && actions.scan != 'disabled') {
             try {
-                const ndef = new NDEFReader();
+                const ndef:NDEFReader = new window.NDEFReader();
                 await ndef.scan();
 
                 console.log("Scan started successfully.");
