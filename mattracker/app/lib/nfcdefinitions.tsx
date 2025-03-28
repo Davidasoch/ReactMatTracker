@@ -1,4 +1,4 @@
-export interface Window {
+export interface window {
   NDEFMessage: NDEFMessage
 }
 declare class NDEFMessage {
@@ -11,7 +11,7 @@ declare interface NDEFMessageInit {
 
 declare type NDEFRecordDataSource = string | BufferSource | NDEFMessageInit
 
-export interface Window {
+export interface window {
   NDEFRecord: NDEFRecord
 }
 declare class NDEFRecord {
@@ -35,7 +35,7 @@ declare interface NDEFRecordInit {
 
 declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
 
-export interface Window {
+export interface window {
   NDEFReader: NDEFReader
 }
 
@@ -51,7 +51,7 @@ export declare class NDEFReader extends EventTarget {
   makeReadOnly: (options?: NDEFMakeReadOnlyOptions) => Promise<void>
 }
 
-export interface Window {
+export interface window {
   NDEFReadingEvent: NDEFReadingEvent
 }
 
