@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 import { ScannerContext } from "../lib/definitions";
 import { ReactNode } from "react";
 
+//this context is created to handle the scanner's state across the pages
 const ActionsContextDefault: ScannerContext = {
     actions: {
         scan: '',
@@ -24,6 +25,8 @@ type Props = {
     children: ReactNode;
 };
 
+//we export the provider to be used in the layout to allow it across all pages
+//we define the state and the functions to swap between both
 export function ActionsProvider({ children }: Props) {
 
     const [actions, setActions] = useState({ scan: 'disabled', write: 'disabled' });
@@ -41,6 +44,7 @@ export function ActionsProvider({ children }: Props) {
         startScan,
         stopScan
     }
+
     return (
         <>
             <ActionsContext.Provider value={value}>

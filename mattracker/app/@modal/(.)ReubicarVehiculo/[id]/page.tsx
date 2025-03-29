@@ -6,8 +6,6 @@ import { getVehicleById } from "@/app/lib/data";
 
 export default async function Page(props: { params: Promise<{ id: number }> }) {
 
-  //const res = fetchProject()
-  //console.log(res)
 
   const params = await props.params
   const idvehicle = params.id

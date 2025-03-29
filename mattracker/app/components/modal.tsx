@@ -17,10 +17,6 @@ export default function Modal({
 
   return (
     <div role="dialog">
-
-
-
-
       <div className="backdrop">
         <div className="modal">
           <span className="flex justify-end cursor-pointer" onClick={closeModal}>

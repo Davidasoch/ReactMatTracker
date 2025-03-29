@@ -13,7 +13,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
 
   return (
     <div>
-
+      
       <LocationSelector locations={locations} vehicle={vehicle} />
 
     </div>

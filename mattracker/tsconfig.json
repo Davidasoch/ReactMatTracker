@@ -22,6 +22,9 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/lib/global.nfc.d.tsx", ],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/lib/nfcdefinitions.d.tsx", ],
+  "exclude": ["node_modules"],
+  "rules": {
+      "@typescript-eslint/consistent-type-imports": "error",
+      }
 }

@@ -4,6 +4,7 @@ import { useState } from "react"
 //import { Sidebar } from '@/app/components/sidebar';
 
 export const Navbar = () => {
+  //we're using useState for the sidebar
   const [isOpen, setIsOpen] = useState(false)
 
   return (

@@ -7,8 +7,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
 
   const params = await props.params
   const idlist = params.id
-  //const res = fetchProject()
-  //console.log(res)
+
 
   const vehicles = await fetchVehicle();
 

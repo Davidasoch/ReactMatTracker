@@ -1,17 +1,20 @@
+//NFC Definitions 
+
 declare global {
-  interface Window {
-    NDEFReader: any;
+  export interface Window  {
+    NDEFReader(): NDEFReader
   }
 
-  interface Window {
+ export interface Window {
     NDEFMessage: NDEFMessage
   }
 
-  interface Window {
+  export interface Window {
     NDEFRecord: NDEFRecord
   }
 
 }
+
 
 export declare class NDEFMessage {
   constructor(messageInit: NDEFMessageInit)
@@ -22,7 +25,6 @@ export declare interface NDEFMessageInit {
 }
 
 export declare type NDEFRecordDataSource = string | BufferSource | NDEFMessageInit
-
 
 export declare class NDEFRecord {
   constructor(recordInit: NDEFRecordInit)
@@ -47,7 +49,7 @@ export declare type NDEFMessageSource = string | BufferSource | NDEFMessageInit
 
 
 
-export declare class NDEFReader extends EventTarget {
+export declare  class NDEFReader extends EventTarget {
   constructor()
   onreading: (this: this, event: NDEFReadingEvent) => void
   onreadingerror: (this: this, error: Event) => void
@@ -79,4 +81,3 @@ export interface NDEFMakeReadOnlyOptions {
 export interface NDEFScanOptions {
   signal: AbortSignal
 }
-

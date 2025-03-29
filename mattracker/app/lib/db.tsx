@@ -1,8 +1,6 @@
-// Get the client
-//import mysql, { FieldPacket } from 'mysql2/promise';
 import mysql from 'mysql2/promise';
 
-
+// Create the connection to database
 export async function getConnection() {
     const connection = await mysql.createConnection({
         host: process.env.DATABASE_HOST,
@@ -13,6 +11,6 @@ export async function getConnection() {
 
     return connection
 }
-// Create the connection to database
+
 
 

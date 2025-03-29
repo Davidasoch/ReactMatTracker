@@ -4,8 +4,6 @@ import RegistersTable from '@/app/ui/registers/table';
 
 export default async function Page() {
 
-  //const res = fetchProject()
-  //console.log(res)
 
   const registers = await fetchRegister();
 

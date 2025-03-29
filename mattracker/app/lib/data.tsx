@@ -43,6 +43,89 @@ export async function getProjectById(id: number) {
   }
 }
 
+//Vehicle functions
+
+//retriev all vehicles
+export async function fetchVehicle() {
+  try {
+
+    const connection = await getConnection()
+    const [results] = await connection.query<Vehicle[]>({
+      sql: `
+          SELECT vehicle.idvehicle, vehicle.model, vehicle.plate, vehicle.date_itv, vehicle.state, location.name AS location_name  FROM vehicle
+          INNER JOIN location ON vehicle.location_idlocation = location.idlocation;
+        `, values: []
+    })
+    await connection.end();
+    return results
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch project data.');
+  }
+}
+
+//retrieve a vehicle by id
+export async function getVehicleById(id: number) {
+  try {
+
+    const connection = await getConnection()
+    const [results] = await connection.query<Vehicle[]>({
+      sql: `
+            SELECT * FROM vehicle 
+            WHERE idvehicle = ${id};
+          `, values: [id]
+    })
+    await connection.end();
+    return results
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch project.');
+  }
+}
+
+//Material functions
+
+//retrieve all materials
+export async function fetchMaterial() {
+  try {
+
+    const connection = await getConnection()
+    const [results] = await connection.query<Material[]>({
+      sql: `
+          SELECT * FROM material;
+        `, values: []
+    })
+    await connection.end();
+    return results
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch project data.');
+  }
+}
+
+//retrieve a material by id
+export async function getMaterialById(id: number) {
+  try {
+
+    const connection = await getConnection()
+    const [results] = await connection.query<Material[]>({
+      sql: `
+              SELECT * FROM material 
+              WHERE idmaterial = ${id};
+            `, values: [id]
+    })
+    await connection.end();
+    return results
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch project.');
+  }
+}
+
 //retireve the project's list material
 
 export async function getListMaterialsById(id: number) {
@@ -133,88 +216,6 @@ export async function updateMaterialProjectState(idmaterial: number) {
 }
 
 
-//Vehicle functions
-
-//retriev all vehicles
-export async function fetchVehicle() {
-  try {
-
-    const connection = await getConnection()
-    const [results] = await connection.query<Vehicle[]>({
-      sql: `
-          SELECT vehicle.idvehicle, vehicle.model, vehicle.plate, vehicle.date_itv, vehicle.state, location.name AS location_name  FROM vehicle
-          INNER JOIN location ON vehicle.location_idlocation = location.idlocation;
-        `, values: []
-    })
-    await connection.end();
-    return results
-
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch project data.');
-  }
-}
-
-//retrieve a vehicle by id
-export async function getVehicleById(id: number) {
-  try {
-
-    const connection = await getConnection()
-    const [results] = await connection.query<Vehicle[]>({
-      sql: `
-            SELECT * FROM vehicle 
-            WHERE idvehicle = ${id};
-          `, values: [id]
-    })
-    await connection.end();
-    return results
-
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch project.');
-  }
-}
-
-//Material functions
-
-//retrieve all materials
-export async function fetchMaterial() {
-  try {
-
-    const connection = await getConnection()
-    const [results] = await connection.query<Material[]>({
-      sql: `
-          SELECT * FROM material;
-        `, values: []
-    })
-    await connection.end();
-    return results
-
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch project data.');
-  }
-}
-
-//retrieve a material by id
-export async function getMaterialById(id: number) {
-  try {
-
-    const connection = await getConnection()
-    const [results] = await connection.query<Material[]>({
-      sql: `
-              SELECT * FROM material 
-              WHERE idmaterial = ${id};
-            `, values: [id]
-    })
-    await connection.end();
-    return results
-
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch project.');
-  }
-}
 
 //Register functions
 
@@ -257,6 +258,9 @@ export async function createRegister(idproject: number, idmaterial: number, idve
   }
 }
 
+//location functions
+
+//retireve all locations
 export async function fetchLocations() {
   try {
 
@@ -276,7 +280,6 @@ export async function fetchLocations() {
 }
 
 //update the location  for vehicles and material
-
 export async function updateVehicleLocation(idvehicle: number, idlocation: number) {
 
   try {

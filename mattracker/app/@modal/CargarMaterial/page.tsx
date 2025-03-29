@@ -5,9 +5,6 @@ import Modal from "@/app/components/modal";
 
 export default async function Page() {
 
-  //const params = await props.params
-  //const idlist = params.id
-
   const vehicles = await fetchVehicle();
 
 

@@ -2,8 +2,9 @@
 
 import { getProjectById, getListMaterialsById } from "@/app/lib/data";
 import ProjectsItem from '@/app/ui/projects/item';
-import '@/app/styles/notifications.css'
 import { ButtonStaple } from "@/app/components/buttonStaple";
+import '@/app/styles/notifications.css'
+
 
 
 
@@ -14,11 +15,14 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
 
   const project = await getProjectById(id);
 
+  //we get the materials associated to the current project
   const materials = await getListMaterialsById(project[0].list_idlist);
+
+  
   const projectname = project[0].name
   const idlist = project[0].list_idlist
 
-
+//we display the material associated to the project and the button to load and to unload
   return (
     <div className='main-content'>
 
