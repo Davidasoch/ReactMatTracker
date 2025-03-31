@@ -153,21 +153,22 @@ export async function getListMaterialsById(id: number) {
 
 //Add a material to a list
 export async function addMaterialToList(idlist: number, idmaterial: number, idvehicle: number) {
-  try {
-
-    const connection = await getConnection()
-    const [results] = await connection.query({
-      sql: `
+  if (idlist !== null) {
+    try {
+      const connection = await getConnection()
+      const [results] = await connection.query({
+        sql: `
             INSERT INTO list_has_material (list_idlist,material_idmaterial, vehicle_idvehicle)
             VALUES (${idlist},${idmaterial},${idvehicle});
           `, values: [idlist, idmaterial, idvehicle]
-    })
-    await connection.end();
-    return results
+      })
+      await connection.end();
+      return results
 
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch project.');
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch project.');
+    }
   }
 }
 

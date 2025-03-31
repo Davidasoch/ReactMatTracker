@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useCallback, useEffect, useState } from 'react';
 import Scanner from '@/app/components/scanbox'
 import { useActions } from '@/app/context/scantest';
@@ -61,7 +60,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
                     updateMaterialProjectState(parseInt(messagevalue))
 
                     //se crea el registro de la accion
-                    createRegister(idlist, parseInt(messagevalue), vehicle_id, 'Cargado')
+                    //createRegister(idlist, parseInt(messagevalue), vehicle_id, 'Cargado')
                     break;
                 case "url":
                     // TODO: Read URL record with record data.
