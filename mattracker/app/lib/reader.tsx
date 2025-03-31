@@ -18,7 +18,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
     const scan = useCallback(async () => {
         if ('NDEFReader' in window && actions.scan != 'disabled') {
             try {
-                const ndef: NDEFReader = new window.NDEFReader();
+                const ndef: NDEFReader = new NDEFReader();
                 await ndef.scan();
 
                 console.log("Scan started successfully.");
@@ -38,7 +38,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
             };
 
         }
-    }, [Scan]);
+    }, [message]);
 
 
     const onReading = (event: NDEFReadingEvent) => {
