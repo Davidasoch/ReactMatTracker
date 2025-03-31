@@ -153,7 +153,7 @@ export async function getListMaterialsById(id: number) {
 
 //Add a material to a list
 export async function addMaterialToList(idlist: number, idmaterial: number, idvehicle: number) {
-  if (idlist !== null) {
+  if (idmaterial != null) {
     try {
       const connection = await getConnection()
       const [results] = await connection.query({
