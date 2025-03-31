@@ -2,7 +2,7 @@
 
 declare global {
   export interface Window  {
-    NDEFReader(): NDEFReader
+    NDEFReader: any
   }
 
  export interface Window {
@@ -14,7 +14,6 @@ declare global {
   }
 
 }
-
 
 export declare class NDEFMessage {
   constructor(messageInit: NDEFMessageInit)

@@ -7,7 +7,7 @@ import Notification from '@/app/components/notification'
 import { addMaterialToList, updateMaterialVehicle } from '@/app/lib/data'
 import { updateMaterialProjectState } from '@/app/lib/data';
 import { createRegister } from '@/app/lib/data';
-import {type NDEFReader, NDEFReadingEvent} from '@/app/lib/nfcdefinitions.d';
+import { NDEFReader, NDEFReadingEvent } from '@/app/lib/nfcdefinitions.d';
 
 const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) => {
 
@@ -20,7 +20,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
             try {
 
 
-                const ndef = new window.NDEFReader();
+                const ndef: NDEFReader = new window.NDEFReader();
                 await ndef.scan();
 
                 console.log("Scan started successfully.");
@@ -38,12 +38,12 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
             } catch (error) {
                 console.log(`Error! Scan failed to start: ${error}.`);
             };
-            
+
         }
-    }, [stopScan]);
+    }, [message]);
 
 
-    const onReading = (event:NDEFReadingEvent) => {
+    const onReading = (event: NDEFReadingEvent) => {
         setSerialNumber(event.serialNumber);
         console.log(serialNumber)
         for (const record of event.message.records) {
@@ -95,10 +95,6 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
                     default: return null;
                 }
             })()}
-
-
-
-
         </>
     );
 };
