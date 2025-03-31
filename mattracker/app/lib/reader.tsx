@@ -38,7 +38,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
             };
 
         }
-    }, []);
+    }, [Scan]);
 
 
     const onReading = (event: NDEFReadingEvent) => {
