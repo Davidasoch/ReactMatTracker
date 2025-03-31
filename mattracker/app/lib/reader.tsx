@@ -13,7 +13,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
 
     const [message, setMessage] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
-    const { actions, startScan} = useActions()
+    const { actions, startScan, stopScan} = useActions()
 
     const scan = useCallback(async () => {
         if ('NDEFReader' in window && actions.scan != 'disabled') {
@@ -30,7 +30,7 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
                     console.log("NDEF message read.");
                     onReading(event);
                     console.log(event.serialNumber)
-                    startScan();
+                    stopScan();
 
                 };
             } catch (error) {
