@@ -3,7 +3,7 @@
 import { getProjectById, getListMaterialsById } from "@/app/lib/data";
 import ProjectsItem from '@/app/ui/projects/item';
 import { ButtonStaple } from "@/app/components/buttonStaple";
-import '@/app/styles/notifications.css'
+import '@/app/styles/global/nfcbutton.css'
 
 
 
@@ -29,7 +29,8 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
       <ProjectsItem ProjectItem={{ materials, projectname }} />
       <div className='nfc-buttons'>
         <ButtonStaple path={`/CargarMaterial/${idlist}`} label={'Cargar'} />
-        <ButtonStaple path={`/DescargarProyecto/${idlist}`} label={'Descargar'} />
+         {/*<ButtonStaple path={`/DescargarProyecto/${idlist}`} label={'Descargar'} />*/}
+
       </div>
 
     </div>

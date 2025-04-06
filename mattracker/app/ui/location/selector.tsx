@@ -5,7 +5,7 @@ import "@/app/styles/global/table.css";
 import { updateVehicleLocation } from '@/app/lib/data';
 
 
-
+//Vehicle selector when loading material
 export default function VehiclesSelector({
   locations,
   vehicle,
@@ -16,18 +16,13 @@ export default function VehiclesSelector({
 
   const [idlocation, setIdlocation] = useState('0')
 
+  //updates the vehicle location whith the selected one
   const handleUpdate = () => {
     const result = updateVehicleLocation(vehicle[0].idvehicle, parseInt(idlocation))
     console.log(result)
   }
 
-
-
-
-
-
-  console.log(idlocation)
-
+  //we're using select to display and select the options
   return (
     <div>
       <div className="main-container">

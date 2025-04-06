@@ -10,6 +10,7 @@ function FilteredMaterialsTable({
 }) {
 
 
+  //this function creates a row for a material filtering by its state and location 
   function FilterState(material: Material) {
     if (material.project_state === materials.filterCase && material.location_idlocation !== 3 || materials.filterCase === 'Todo')
       return (

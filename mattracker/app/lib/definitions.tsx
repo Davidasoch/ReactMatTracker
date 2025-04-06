@@ -3,10 +3,14 @@ import { RowDataPacket } from "mysql2"
 export interface Project extends RowDataPacket {
   idproject: number;
   name: string;
-  date_start: string;
-  date_end: string;
+  date_start: Date;
+  date_end: Date;
   location_idlocation: number;
   list_idlist: number;
+};
+
+export interface LoadedVehicles extends RowDataPacket {
+  loaded_vehicles: number;
 };
 
 export interface Vehicle extends RowDataPacket {
@@ -24,7 +28,7 @@ export interface Register extends RowDataPacket {
   idregister: number;
   material_idmaterial: number;
   what?: string;
-  date: string;
+  date: Date;
   vehicle_idvehicle: number;
   location_idlocation: number;
   project_idproject: number;
@@ -39,6 +43,9 @@ export interface Material extends RowDataPacket {
   state: string;
   location_idlocation: number;
   subcategory_idsubcategory: number;
+  location_name: string;
+  subcategory_name: string;
+  vehicle_idvehicle: number;
 }
 
 export interface Location extends RowDataPacket {

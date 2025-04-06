@@ -8,7 +8,7 @@ export default async function Page() {
   const materials = await fetchMaterial();
 
   return (
-    <div>
+    <div className="main-container">
       <MaterialsTable materials={materials} />
     </div>
   );

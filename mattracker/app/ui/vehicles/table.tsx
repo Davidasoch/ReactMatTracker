@@ -13,7 +13,6 @@ export default async function VehiclesTable({
 
   return (
     <div>
-      <div className="main-container">
         <h1 className="title">
           Vehiculos
         </h1>
@@ -72,7 +71,6 @@ export default async function VehiclesTable({
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }

@@ -1,15 +1,20 @@
 'use client'
 import Link from 'next/link';
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 //import { Sidebar } from '@/app/components/sidebar';
 
 export const Navbar = () => {
+
   //we're using useState for the sidebar
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname();
+  
+  useEffect(() => (isOpen ? setIsOpen(false) : void null), [pathname])
 
   return (
     <div className="sticky fixed w-full top-0">
-      <nav className=" bg-gray-700 text-white p-4 sm:p-6 md:flex md:justify-between md:items-center">
+      <nav className=" bg-[#0058a3] text-white p-4 sm:p-6 md:flex md:justify-between md:items-center">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold">
             MatTracker

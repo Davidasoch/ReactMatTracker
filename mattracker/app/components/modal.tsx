@@ -14,7 +14,6 @@ export default function Modal({
     router.back()
   }
 
-
   return (
     <div role="dialog">
       <div className="backdrop">

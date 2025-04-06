@@ -10,7 +10,6 @@ function MaterialsTable({
 }) {
   return (
     <div>
-      <div className="main-container">
         <h1 className="title">
           Material
         </h1>
@@ -52,13 +51,13 @@ function MaterialsTable({
                           {material.category}
                         </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {JSON.stringify(material.subcategory_idsubcategory)}
+                         {material.subcategory_name}
                         </td>
                         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           {material.state}
                         </td>
                         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {material.location_idlocation}
+                          {material.location_name}
                         </td>
                       </tr>
                     ))}
@@ -68,7 +67,6 @@ function MaterialsTable({
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }

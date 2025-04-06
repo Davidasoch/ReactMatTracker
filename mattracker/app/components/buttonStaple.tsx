@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 
-//basic button component
+//basic button component to redirect
 export const ButtonStaple = ({ path, label }: { path: string, label: string }) => {
 
     const router = useRouter()

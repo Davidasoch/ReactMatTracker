@@ -1,8 +1,9 @@
 
 'use client'
-import Scan from '@/app/lib/reader'
+import Scan from '@/app/components/reader'
+
 //useAction handle the context data
-import { useActions } from '@/app/context/scantest';
+import { useActions } from '@/app/context/scanactions';
 
 //this components is prepared to load material
 const NfcButtonCargar = ({ idlist, status, vehicle_id }: { idlist: number; status: boolean; vehicle_id: number }) => {

@@ -1,6 +1,6 @@
 'use server'
 import { getConnection } from "@/app/lib/db"
-import { Material, Project, Vehicle, Register, Location } from '@/app/lib/definitions';
+import { Material, Project, Vehicle, Register, Location, LoadedVehicles } from '@/app/lib/definitions';
 
 //Project functions
 
@@ -72,8 +72,8 @@ export async function getVehicleById(id: number) {
     const connection = await getConnection()
     const [results] = await connection.query<Vehicle[]>({
       sql: `
-            SELECT * FROM vehicle 
-            WHERE idvehicle = ${id};
+         SELECT vehicle.idvehicle, vehicle.model, vehicle.plate, vehicle.date_itv, vehicle.state, location.name AS location_name  FROM vehicle
+          INNER JOIN location ON vehicle.location_idlocation = location.idlocation AND idvehicle = ${id};
           `, values: [id]
     })
     await connection.end();
@@ -94,7 +94,9 @@ export async function fetchMaterial() {
     const connection = await getConnection()
     const [results] = await connection.query<Material[]>({
       sql: `
-          SELECT * FROM material;
+         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.location_idlocation, material.vehicle_idvehicle, location.name AS location_name, subcategory.name AS subcategory_name FROM material
+          INNER JOIN location ON material.location_idlocation = location.idlocation
+          INNER JOIN subcategory ON material.subcategory_idsubcategory = subcategory.idsubcategory;
         `, values: []
     })
     await connection.end();
@@ -113,8 +115,10 @@ export async function getMaterialById(id: number) {
     const connection = await getConnection()
     const [results] = await connection.query<Material[]>({
       sql: `
-              SELECT * FROM material 
-              WHERE idmaterial = ${id};
+         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.location_idlocation, location.name AS location_name, subcategory.name AS subcategory_name FROM material
+          INNER JOIN location ON material.location_idlocation = location.idlocation
+          INNER JOIN subcategory ON material.subcategory_idsubcategory = subcategory.idsubcategory
+              WHERE material.idmaterial = ${id};
             `, values: [id]
     })
     await connection.end();
@@ -127,7 +131,6 @@ export async function getMaterialById(id: number) {
 }
 
 //retireve the project's list material
-
 export async function getListMaterialsById(id: number) {
   try {
 
@@ -167,13 +170,12 @@ export async function addMaterialToList(idlist: number, idmaterial: number, idve
 
     } catch (error) {
       console.error('Database Error:', error);
-      throw new Error('Failed to fetch project.');
+      throw new Error('Failed to add material to list.');
     }
   }
 }
 
 //update material vehicle
-
 export async function updateMaterialVehicle(idmaterial: number, idvehicle: number) {
 
   try {
@@ -195,7 +197,6 @@ export async function updateMaterialVehicle(idmaterial: number, idvehicle: numbe
 }
 
 //update material project state
-
 export async function updateMaterialProjectState(idmaterial: number) {
 
   try {
@@ -216,6 +217,29 @@ export async function updateMaterialProjectState(idmaterial: number) {
   }
 }
 
+// retrieve the material loaded in a vehicle
+export async function checkVehicleLoad(id: number) {
+  try {
+
+    const connection = await getConnection()
+    const [results] = await connection.query<Material[]>({
+      sql: `
+         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.location_idlocation, location.name AS location_name, subcategory.name AS subcategory_name FROM material
+          INNER JOIN location ON material.location_idlocation = location.idlocation
+          INNER JOIN subcategory ON material.subcategory_idsubcategory = subcategory.idsubcategory
+            WHERE material.vehicle_idvehicle = ${id};
+          `, values: [id]
+    })
+    
+    await connection.end();
+    return results
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch project.');
+  }
+}
+
 
 
 //Register functions
@@ -226,7 +250,11 @@ export async function fetchRegister() {
     const connection = await getConnection()
     const [results] = await connection.query<Register[]>({
       sql: `
-          SELECT * FROM register;
+          SELECT register.idregister, register.material_idmaterial, register.date, register.type, register.location_idlocation, register.vehicle_idvehicle, register.project_idproject, location.name AS location_name, vehicle.model as vehicle_name, material.name as material_name, project.name as project_name FROM register
+          INNER JOIN location ON register.location_idlocation = location.idlocation
+          INNER JOIN vehicle ON register.vehicle_idvehicle = vehicle.idvehicle
+          INNER JOIN material ON register.material_idmaterial = material.idmaterial
+          INNER JOIN project ON register.project_idproject = project.idproject;
         `, values: []
     })
     await connection.end();
@@ -237,6 +265,8 @@ export async function fetchRegister() {
     throw new Error('Failed to fetch project data.');
   }
 }
+
+//create the register when a material is loaded
 export async function createRegister(idproject: number, idmaterial: number, idvehicle: number, type: string) {
   try {
 

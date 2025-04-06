@@ -1,6 +1,7 @@
 
 import { Register } from '@/app/lib/definitions';
 import "@/app/styles/global/table.css";
+import { parseDate } from '@/app/lib/utils';
 
 export default async function RegistersTable({
   registers,
@@ -9,16 +10,16 @@ export default async function RegistersTable({
 }) {
   return (
     <div>
-      <div className="">
+      <div className="main-container">
         <h1 className="title">
           Registros
         </h1>
 
-        <div className="mt-6 flow-root ">
+        <div className="tablea">
           <div className="overflow-x-auto">
             <div className="tablecontainer">
               <div className="rounded-md p-2 md:pt-0">
-                <table className=" min-w-full rounded-md text-gray-900 md:table border justify-content-center">
+                <table className=" rounded-md text-gray-900 md:table border justify-content-center">
                   <thead className="rounded-md text-left text-sm font-normal">
                     <tr>
                       <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
@@ -47,23 +48,23 @@ export default async function RegistersTable({
                       <tr key={register.idregister} className="group">
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           <div className="flex items-center gap-3">
-                            <p>{register.material_idmaterial}</p>
+                            {register.material_name}
                           </div>
                         </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           {register.type}
                         </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {JSON.stringify(register.date)}
+                          {parseDate(register.date)}
                         </td>
                         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {register.vehicle_idvehicle}
+                          {register.vehicle_name}
                         </td>
                         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {register.location_idlocation}
+                          {register.location_name}
                         </td>
                         <td className="locationrow whitespace-nowrap bg-white px-4 py-5 text-sm border">
-                          {register.project_idproject}
+                          {register.project_name}
                         </td>
                       </tr>
                     ))}

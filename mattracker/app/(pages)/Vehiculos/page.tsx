@@ -8,8 +8,9 @@ export default async function Page() {
   const vehicles = await fetchVehicle();
 
 
+
   return (
-    <div>
+    <div className="main-container">
       <VehiclesTable vehicles={vehicles} />
     </div>
   );

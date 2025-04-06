@@ -2,7 +2,7 @@
 'use client'
 import '@/app/styles/scanbox.css'
 import React from 'react';
-import { useActions, ActionsProvider } from '@/app/context/scantest'
+import { useActions, ActionsProvider } from '@/app/context/scanactions'
 
 //this is the scan display, it also handle the context to stop the scan
 const Scanner = () => {

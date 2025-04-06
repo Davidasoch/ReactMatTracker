@@ -12,7 +12,7 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
 
 
   return (
-    <div>
+    <div className="main-container">
       <MaterialsTable materials={materials} />
 
     </div>

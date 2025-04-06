@@ -1,0 +1,48 @@
+.container-dash {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 50px
+}
+
+.projects-dash {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 40%;
+    height: 50%;
+    max-width: 350px;
+}
+
+.card{
+border-radius: 20px;
+}
+
+.card-content{
+    padding: 6px 15px 15px 15px;
+}
+
+.material-vehicles-dash {
+width: 40%;
+height: 378px;
+max-width: 350px;
+}
+
+.material-dash {
+    align-items: stretch;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 15px;
+}
+
+.dash {
+    align-items: stretch;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.card-head{
+    background-color: #0058a3;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+

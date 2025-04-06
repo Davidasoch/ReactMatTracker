@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import '@/app/styles/notifications.css';
 
+//notification work in progress
+
 const Notification = ({ message }: { message: string }) => {
 
   const [display, setDisplay] = useState(true);
