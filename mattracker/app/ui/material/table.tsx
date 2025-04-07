@@ -44,7 +44,7 @@ function MaterialsTable({
                       <tr key={material.idmaterial} className="group">
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           <div className="flex items-center gap-3">
-                            <Link href={`/Material/${material.idmaterial}`}>{material.name}</Link>
+                            <Link className='link' href={`/Material/${material.idmaterial}`}>{material.name}</Link>
                           </div>
                         </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">

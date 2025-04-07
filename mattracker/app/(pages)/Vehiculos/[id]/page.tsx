@@ -4,6 +4,7 @@ import VehiclesTable from '@/app/ui/vehicles/table';
 import MaterialsTable from '@/app/ui/material/table';
 import '@/app/styles/notifications.css'
 import '@/app/styles/projects/dashboard.css'
+import '@/app/styles/global/nfcbutton.css'
 
 export default async function Page(props: { params: Promise<{ id: number }> }) {
   const params = await props.params

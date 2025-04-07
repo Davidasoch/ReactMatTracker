@@ -1,5 +1,6 @@
 import { Project } from '@/app/lib/definitions';
 import '@/app/styles/projects/dashboard.css'
+import Link from 'next/link';
 
 export default async function ProjectsDash({
     projects,
@@ -25,7 +26,7 @@ export default async function ProjectsDash({
             </div>
             <div className='card-content'>
             {projects.map((project) => (
-                <div key={project.idproject} className='project-row'>  <p key={project.idproject} className="group">-{project.name}</p></div>
+                <div key={project.idproject} className='project-row'>  <Link className='link' href={`/Proyectos/${project.idproject}`}>-{project.name}</Link></div>
 
             ))}
             </div>

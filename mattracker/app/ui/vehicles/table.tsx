@@ -44,7 +44,7 @@ export default async function VehiclesTable({
                       <tr key={vehicle.idvehicle} className="group">
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           <div className="flex items-center gap-3">
-                            <Link href={`/Vehiculos/${vehicle.idvehicle}`}>{vehicle.model}</Link>
+                            <Link className='link' href={`/Vehiculos/${vehicle.idvehicle}`}>{vehicle.model}</Link>
                           </div>
                         </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">

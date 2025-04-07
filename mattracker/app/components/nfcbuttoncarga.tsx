@@ -2,6 +2,7 @@
 'use client'
 import Scan from '@/app/components/reader'
 
+
 //useAction handle the context data
 import { useActions } from '@/app/context/scanactions';
 

@@ -51,7 +51,7 @@
   width: 400px;
 }
 
-p:first-child {
+.pfirst:first-child {
   font-weight: bold;
   margin-top: 15px;
 }

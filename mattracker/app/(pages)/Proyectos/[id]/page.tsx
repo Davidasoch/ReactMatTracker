@@ -3,7 +3,7 @@
 import { getProjectById, getListMaterialsById } from "@/app/lib/data";
 import ProjectsItem from '@/app/ui/projects/item';
 import { ButtonStaple } from "@/app/components/buttonStaple";
-import '@/app/styles/global/nfcbutton.css'
+
 
 
 
