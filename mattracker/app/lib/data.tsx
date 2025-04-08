@@ -94,7 +94,7 @@ export async function fetchMaterial() {
     const connection = await getConnection()
     const [results] = await connection.query<Material[]>({
       sql: `
-         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.location_idlocation, material.vehicle_idvehicle, location.name AS location_name, subcategory.name AS subcategory_name FROM material
+         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.project_state, material.location_idlocation, material.vehicle_idvehicle, location.name AS location_name, subcategory.name AS subcategory_name FROM material
           INNER JOIN location ON material.location_idlocation = location.idlocation
           INNER JOIN subcategory ON material.subcategory_idsubcategory = subcategory.idsubcategory;
         `, values: []
@@ -115,7 +115,7 @@ export async function getMaterialById(id: number) {
     const connection = await getConnection()
     const [results] = await connection.query<Material[]>({
       sql: `
-         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.location_idlocation, location.name AS location_name, subcategory.name AS subcategory_name FROM material
+         SELECT material.idmaterial, material.name, material.category, material.state,  material.notes,  material.image, material.project_state, material.location_idlocation, location.name AS location_name, subcategory.name AS subcategory_name FROM material
           INNER JOIN location ON material.location_idlocation = location.idlocation
           INNER JOIN subcategory ON material.subcategory_idsubcategory = subcategory.idsubcategory
               WHERE material.idmaterial = ${id};

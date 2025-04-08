@@ -13,6 +13,7 @@
   padding-right: 16px;
   font-weight: 800;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .scanner-container {
@@ -25,5 +26,5 @@
 }
 
 .scanner-image {
-  height: 20vmin;
+  margin-bottom: 40px;
 }

@@ -46,6 +46,7 @@ export interface Material extends RowDataPacket {
   location_name: string;
   subcategory_name: string;
   vehicle_idvehicle: number;
+  project_state: string;
 }
 
 export interface Location extends RowDataPacket {

@@ -15,7 +15,7 @@ function ProjectsItem({
     { name: 'Todo', content: 'Todo el material' },
     { name: 'Descargado', content: 'Todo el material descargado' },
     { name: 'Cargado', content: 'todo el material cargado' },
-    { name: 'Pendiente', content: 'Todo el material pendiente' }
+    { name: 'Preparacion', content: 'Todo el material pendiente' }
   ]
 
   const materials = ProjectItem.materials
@@ -56,7 +56,7 @@ function ProjectsItem({
               ))}
             </div>
             <div className='content'>{tabs[activeTabIndex].content}
-              <FilteredMaterialsTable materials={{ materials, filterCase }} />
+              <FilteredMaterialsTable materials={{ materials, filterCase }} index={activeTabIndex} />
             </div>
           </div>
         }

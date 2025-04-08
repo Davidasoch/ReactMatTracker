@@ -91,9 +91,9 @@ const Scan = ({ idlist, vehicle_id }: { idlist: number; vehicle_id: number }) =>
                         <Scanner></Scanner>
                         <p>{parseInt(message)}</p>
                     </div>
-                    case "scanning": return <div> <Scanner></Scanner> <p>{actions.scan}</p></div>
+                    case "scanning": return <div> <Scanner></Scanner> <p></p></div>
 
-                    case "disabled": return <><p>{actions.scan}</p></>
+                    case "disabled": return <><p></p></>
 
                     default: return null;
                 }
