@@ -5,7 +5,7 @@
 -still work in progress-
 
 This web application is designed to track the material and enhace the traceability for audio, illumination and video companies dedicated to provide and run events.
-it uses the Web NFC functionality supported by Chrome following the guidelines from [W3C wEB nfc](https://w3c.github.io/web-nfc/)
+It uses the Web NFC functionality supported by Chrome following the guidelines from [W3C WEB nfc](https://w3c.github.io/web-nfc/).
 
 
 In this repository you'll find everything you need to setup the web application, alongside the code there is a database preset to try out the functions.
