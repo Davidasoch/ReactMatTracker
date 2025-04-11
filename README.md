@@ -10,7 +10,9 @@ It uses the Web NFC functionality supported by Chrome following the guidelines f
 
 In this repository you'll find everything you need to setup the web application, alongside the code there is a database preset to try out the functions.
 
-In order for the NFC functionalities to work you must be using one of the specified [Web browsers supported](https://developer.mozilla.org/en-US/docs/Web/API/Web_NFC_API#browser_compatibility) and turn on Experimental Web Platform features (for [chrome](chrome://flags/)).
+In order for the NFC functionalities to work you must be using one of the specified [supported Web browsers](https://developer.mozilla.org/en-US/docs/Web/API/Web_NFC_API#browser_compatibility) and turn on Experimental Web Platform features (for [chrome](chrome://flags/)).
+
+The application recognizes the material by an ID that must be stored in the text field within the nfc data.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
