@@ -21,6 +21,9 @@ function MaterialsTable({
                 <table className=" rounded-md text-gray-900 md:table border justify-content-center">
                   <thead className="rounded-md text-left text-sm font-normal">
                     <tr>
+                    <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                        Id
+                      </th>
                       <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                         Nombre
                       </th>
@@ -42,6 +45,9 @@ function MaterialsTable({
                   <tbody className="divide-y divide-gray-200 text-gray-900">
                     {materials.map((material) => (
                       <tr key={material.idmaterial} className="group">
+                        <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
+                        {material.idmaterial}
+                        </td>
                         <td className="whitespace-nowrap bg-white px-4 py-5 text-sm border">
                           <div className="flex items-center gap-3">
                             <Link className='link' href={`/Material/${material.idmaterial}`}>{material.name}</Link>
