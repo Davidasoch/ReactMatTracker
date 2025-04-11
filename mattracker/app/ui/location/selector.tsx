@@ -33,8 +33,8 @@ export default function VehiclesSelector({
 
         <div className="mt-6 flow-root ">
           <div className="overflow-x-auto">
-            <div className=''><label htmlFor='vehicleid'></label></div>
-            <select id='vehicleid' value={idlocation} onChange={(e) => setIdlocation(e.target.value)}>
+            <div className=''><label htmlFor='optionDropdown'></label></div>
+            <select id='optionDropdown' value={idlocation} onChange={(e) => setIdlocation(e.target.value)}>
               {locations.map(location => (
                 <option key={location.idlocation} value={location.idlocation}>
                   {location.name}
@@ -43,7 +43,7 @@ export default function VehiclesSelector({
             </select>
           </div>
           <div className='nfc-buttons'>
-            <button className='btn' onClick={handleUpdate}>Actualizar ubicacion</button>
+            <button className='btn medium' onClick={handleUpdate}>Actualizar ubicacion</button>
           </div>
         </div>
       </div>

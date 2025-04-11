@@ -1,8 +1,6 @@
 .nfc-buttons .btn {
     background: #0f6ebb;
     color: white;
-    width: 150px;
-    height: 30px;
     border: 1px 1em;
     border-radius: 5px;
     outline: none;
@@ -64,3 +62,21 @@
     opacity: 1;
     border: 1px solid gray;
   }
+
+  .nfc-buttons .big {
+    width: 300px;
+    height: 60px;
+  }
+
+  .nfc-buttons .small {
+    width: 150px;
+    height: 30px;
+  }
+
+  .nfc-buttons .medium {
+    width: 180px;
+    height: 35px;
+  }
+
+
+  

@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 
 //basic button component to redirect
-export const ButtonStaple = ({ path, label }: { path: string, label: string }) => {
+export const ButtonStaple = ({ path, label, size }: { path: string, label: string, size: string}) => {
 
     const router = useRouter()
 
@@ -12,6 +12,6 @@ export const ButtonStaple = ({ path, label }: { path: string, label: string }) =
 
     return (
 
-        <button className='btn' onClick={callPath}>{label}</button>
+        <button className={`btn ${size}`} onClick={callPath}>{label}</button>
     )
 }

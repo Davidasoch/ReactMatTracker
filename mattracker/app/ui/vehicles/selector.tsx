@@ -76,9 +76,7 @@ export default function VehiclesSelector({
                 </form>
               </div>
             </div>
-            <div className='nfc-buttons'>
-              <NfcButtonCargar idlist={idlist} status={status} vehicle_id={vehicle_id} />
-            </div>
+              <NfcButtonCargar idlist={idlist} status={status} vehicle_id={vehicle_id} size={'medium'} />
           </div>
         </div>
       </div>

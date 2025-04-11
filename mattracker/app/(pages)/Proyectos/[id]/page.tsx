@@ -28,8 +28,8 @@ export default async function Page(props: { params: Promise<{ id: number }> }) {
 
       <ProjectsItem ProjectItem={{ materials, projectname }} />
       <div className='nfc-buttons'>
-        <ButtonStaple path={`/CargarMaterial/${idlist}`} label={'Cargar'} />
-         {/*<ButtonStaple path={`/DescargarProyecto/${idlist}`} label={'Descargar'} />*/}
+        <ButtonStaple path={`/CargarMaterial/${idlist}`} label={'Cargar'} size={'small'}/>
+         <ButtonStaple path={`/DescargarMaterial/${idlist}`} label={'Descargar'} size={'small'} />
 
       </div>
 
